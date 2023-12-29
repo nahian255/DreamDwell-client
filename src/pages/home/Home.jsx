@@ -1,4 +1,5 @@
 import Header from "./Header";
+import OurValue from "./OurValue";
 import PopularResidencies from "./PopularResidencies";
 
 const Home = () => {
@@ -8,6 +9,7 @@ const Home = () => {
                 <Header />
             </div>
             <PopularResidencies />
+            <OurValue />
         </div>
     );
 };
