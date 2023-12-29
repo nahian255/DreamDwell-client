@@ -1,3 +1,5 @@
+import Contact from "./Contact";
+import GetStart from "./GetStart";
 import Header from "./Header";
 import OurValue from "./OurValue";
 import PopularResidencies from "./PopularResidencies";
@@ -10,6 +12,8 @@ const Home = () => {
             </div>
             <PopularResidencies />
             <OurValue />
+            <Contact />
+            <GetStart />
         </div>
     );
 };

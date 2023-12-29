@@ -31,7 +31,7 @@ const PopularResidencies = () => {
 
                             </div>
                         ))
-                    };
+                    }
                 </Swiper>
             </div>
         </div>
