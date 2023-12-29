@@ -1,4 +1,5 @@
 import Header from "./Header";
+import PopularResidencies from "./PopularResidencies";
 
 const Home = () => {
     return (
@@ -6,7 +7,7 @@ const Home = () => {
             <div className="text-white bg-[#23201f]">
                 <Header />
             </div>
-            <h1>new section</h1>
+            <PopularResidencies />
         </div>
     );
 };

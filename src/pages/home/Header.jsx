@@ -11,7 +11,7 @@ const Header = () => {
                 <div> mini type</div>
                 {/* <div className="bg-gray-200 w-32 h-32 -top-12"></div> */}
             </div>
-            <div className="align-middle  p-24 ">
+            <div className="align-middle  p-10 ">
                 <img className="rounded-t-full" height={300} width={400} src={image} alt="" />
             </div>
         </div>
