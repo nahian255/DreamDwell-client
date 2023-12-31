@@ -1,25 +1,9 @@
-import { useState, useEffect } from 'react';
-import { Link, useLoaderData, useParams } from 'react-router-dom';
-
+import { Link, useLoaderData, } from 'react-router-dom';
 
 const Properites = () => {
-
-    // const [properties, setProperties] = useState([]);
     const data = useLoaderData()
-
-    // console.log(properties)
-
-    // useEffect(() => {
-    //     // Fetch data from the API when the component mounts
-    //     fetch(`http://localhost:3000/api/properties/${id}`)
-    //         .then(response => response.json())
-    //         .then(data => setProperties(data))
-    //         .catch(error => console.error('Error fetching data:', error));
-    // }, []); // The empty dependency array ensures that the effect runs only once when the component mounts
-
     return (
         <div className='px-24 py-8'>
-            <h1> this is properites page</h1>
             <div className='grid grid-cols-3 gap-4'>
                 {data.map(item => (
                     <div key={item.id}>
