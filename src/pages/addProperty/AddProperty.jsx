@@ -19,6 +19,7 @@ const AddProperty = () => {
         }));
     };
 
+    // data send server and save in database.
     const handleSubmit = async () => {
         try {
             const response = await fetch('http://localhost:3000/api/add-properties', {
@@ -28,7 +29,6 @@ const AddProperty = () => {
                 },
                 body: JSON.stringify(formData),
             });
-
             if (response.ok) {
                 console.log('Form data submitted successfully');
                 // Reset the form data if needed

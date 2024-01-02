@@ -7,6 +7,8 @@ import Main from "../layout/Main";
 import CounactUs from "../pages/counactUs/CounactUs";
 import AddProperty from "../pages/addProperty/AddProperty";
 import ProperitesDetails from "../pages/properites/ProperitesDetails";
+import Login from "../pages/login/Login";
+import Singup from "../pages/singUp/Singup";
 
 const router = createBrowserRouter([
     {
@@ -38,6 +40,14 @@ const router = createBrowserRouter([
             {
                 path: 'add-properites',
                 element: <AddProperty />
+            },
+            {
+                path: 'login',
+                element: <Login />
+            },
+            {
+                path: 'register',
+                element: <Singup />
             },
         ]
     },

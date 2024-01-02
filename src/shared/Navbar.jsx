@@ -13,7 +13,7 @@ const Navbar = () => {
                 <Link to={'/properites'}>Properites</Link>
                 <Link to={'countact'}>Countact Us</Link>
                 <Link to={'/add-properites'} >Add Property</Link>
-
+                <Link to={'/login'} >Login</Link>
             </div>
         </div>
     );
