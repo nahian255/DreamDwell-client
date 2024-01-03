@@ -4,8 +4,8 @@ const Header = () => {
     return (
         <div className="flex px-28 align-baseline ">
             <div className="w-1/2 py-10 relative">
-                <h1 className="text-6xl font-bold py-8">Discover <br /> Most Suitable Property</h1>
-                <p className="text-xl py-10">Find a variety of properties that suit you very easiltyForget all difficulties in finding a residence for you
+                <h1 className="text-6xl font-sans font-bold py-8">Discover <br /> Most Suitable Property</h1>
+                <p className="text-xl py-10 font-Poppins">Find a variety of properties that suit you very easiltyForget all difficulties in finding a residence for you
                 </p>
                 <div className="py-8"> serch bar</div>
                 <div> mini type</div>

@@ -2,8 +2,8 @@
 const CounactUs = () => {
 
     return (
-        <div>
-            <h1> Countact us page</h1>
+        <div className="flex justify-center items-center h-screen bg-gray-100">
+
         </div>
     );
 };
