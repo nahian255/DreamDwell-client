@@ -13,6 +13,7 @@ const Footer = () => {
                     <h1 className="text-[#1f3e72] font-bold text-3xl">Information</h1>
                     <p>address</p>
                     <p>Social Media</p>
+                    <p>Linkedin account</p>
                 </div>
             </div>
 
