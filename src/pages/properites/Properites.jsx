@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 
 // Function to truncate text to the first n words
@@ -9,11 +10,33 @@ const truncateText = (text, numWords) => {
 
 const Properites = () => {
     const data = useLoaderData();
+    const [searchQuery, setSearchQuery] = useState('');
+
+    // Filter data based on the search query
+    const filteredData = data.filter(item =>
+        item.name.toLowerCase().includes(searchQuery.toLowerCase())
+
+    );
+    console.log(filteredData);
+
 
     return (
         <div className='px-24 py-8'>
+            <h1 className="text-4xl text-[#1f3e72] font-bold pb-4 text-center">All Property</h1>
+
+            {/* Search field */}
+            <div className="mb-4 items-center flex justify-center">
+                <input
+                    type="text"
+                    placeholder="Search by property name..."
+                    // value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="px-3 py-2 border rounded-md w-1/2"
+                />
+            </div>
+
             <div className='grid grid-cols-3 gap-4'>
-                {data.map(item => (
+                {filteredData?.map(item => (
                     <div key={item._id}>
                         <Link to={`/properites/${item._id}`}>
                             <div className='hover:bg-blue-100 p-3 rounded-xl'>
