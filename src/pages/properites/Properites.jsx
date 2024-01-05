@@ -15,7 +15,7 @@ const Properites = () => {
             <div className='grid grid-cols-3 gap-4'>
                 {data.map(item => (
                     <div key={item._id}>
-                        <Link to={`/properties/${item._id}`}>
+                        <Link to={`/properites/${item._id}`}>
                             <div className='hover:bg-blue-100 p-3 rounded-xl'>
                                 <div>
                                     <img className='rounded-2xl h-[220px]' height={50} src={item.image} alt="" />
