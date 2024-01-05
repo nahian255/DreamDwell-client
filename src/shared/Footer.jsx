@@ -1,4 +1,5 @@
 
+
 const Footer = () => {
     return (
         <div className="py-6 ">
@@ -14,6 +15,7 @@ const Footer = () => {
                     <p>address</p>
                     <p>Social Media</p>
                     <p>Linkedin account</p>
+
                 </div>
             </div>
 

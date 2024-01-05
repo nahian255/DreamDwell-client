@@ -2,9 +2,9 @@ import { Link, useLoaderData } from 'react-router-dom';
 
 // Function to truncate text to the first n words
 const truncateText = (text, numWords) => {
-    const words = text.split(' ');
-    const truncated = words.slice(0, numWords).join(' ');
-    return words.length > numWords ? `${truncated}...` : truncated;
+    const words = text?.split(' ');
+    const truncated = words?.slice(0, numWords).join(' ');
+    return words?.length > numWords ? `${truncated}...` : truncated;
 };
 
 const Properites = () => {
