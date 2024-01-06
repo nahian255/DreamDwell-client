@@ -7,7 +7,7 @@ import PopularResidencies from "./PopularResidencies";
 const Home = () => {
     return (
         <div>
-            <div className="text-white bg-[#23201f]">
+            <div className="text-white bg-[#131110]">
                 <Header />
             </div>
             <PopularResidencies />

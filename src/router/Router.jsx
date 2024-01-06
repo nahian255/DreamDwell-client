@@ -34,7 +34,7 @@ const router = createBrowserRouter([
                 },
             },
             {
-                path: 'countact',
+                path: '/countact',
                 element: <CounactUs />
             },
             {

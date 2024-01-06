@@ -18,11 +18,13 @@ export function Demo() {
             favoriteColor: matches(/^#([0-9a-f]{3}){1,2}$/, 'Enter a valid hex color'),
             age: isInRange({ min: 18, max: 99 }, 'You must be 18-99 years old to register'),
         },
+        // const handleSubmit = () => {
+        //     console.log('clicked');
+        //     console.log(initialValues);
+        // }
     });
 
-    const handleSubmit = () => {
-        console.log('clicked');
-    }
+
 
     return (
         <Box component="form" maw={400} mx="auto" onSubmit={form.onSubmit(() => { })}>
@@ -57,7 +59,7 @@ export function Demo() {
             />
 
             <Group justify="flex-end" mt="md">
-                <Button onClick={handleSubmit} type="submit">Submit</Button>
+                <Button type="submit">Submit</Button>
             </Group>
         </Box>
     );

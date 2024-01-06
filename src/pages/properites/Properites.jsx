@@ -31,7 +31,7 @@ const Properites = () => {
                     placeholder="Search by property name..."
                     // value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    className="px-3 py-2 border rounded-md w-1/2"
+                    className="px-3 py-2 border-2 border-gray-500 rounded-md w-1/2"
                 />
             </div>
 
