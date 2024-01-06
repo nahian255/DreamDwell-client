@@ -5,7 +5,7 @@ import data from "../../utils/slider.json"
 const PopularResidencies = () => {
     console.log(data);
     return (
-        <div className="px-28 py-6">
+        <div className="py-6">
             <h1 className="text-orange-500 font-sans text-2xl font-semibold"> Best choiess</h1>
             <h1 className="text-4xl font-sans text-[#1f3e72] font-bold"> Popular Residencies</h1>
             <div className='py-4 '>

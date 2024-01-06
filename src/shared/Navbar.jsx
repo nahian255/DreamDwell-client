@@ -9,7 +9,7 @@ const Navbar = () => {
     // }
 
     return (
-        <div className="bg-slate-200 p-3  flex justify-between px-16">
+        <div className="bg-[#131110] text-white p-3  flex justify-between px-16">
             <h1 className="text-3xl">DreamDwell</h1>
             <div className="flex gap-4 text-xl">
                 <Link to={'/'}>Home</Link>

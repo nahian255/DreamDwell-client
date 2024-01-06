@@ -6,14 +6,17 @@ import PopularResidencies from "./PopularResidencies";
 
 const Home = () => {
     return (
-        <div>
+        <div >
             <div className="text-white bg-[#131110]">
                 <Header />
             </div>
-            <PopularResidencies />
-            <OurValue />
-            <Contact />
-            <GetStart />
+            <div className="px-20">
+                <PopularResidencies />
+                <OurValue />
+                <Contact />
+                <GetStart />
+            </div>
+
         </div>
     );
 };
