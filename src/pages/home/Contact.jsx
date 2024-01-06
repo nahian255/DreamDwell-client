@@ -12,26 +12,24 @@ const Contact = () => {
                         <div className=" rounded shadow-md hover:shadow-xl border-2 border-t-gray-200  p-4">
                             <h2 className="text-2xl text-[#1f3e72]  font-bold mb-1">Chat</h2>
                             <h2 className="text-xl text-[#8c8b8b] font-bold mb-1">0123456789</h2>
-                            <button className="bg-blue-400 hover:bg-blue-500 text-white px-2 py-1 rounded">Message</button>
+                            <button className="bg-blue-400 hover:bg-blue-500 text-white px-2 py-1 rounded">chat now</button>
+                        </div>
+                        <div className=" rounded shadow-md hover:shadow-xl border-2 border-t-gray-200  p-4">
+                            <h2 className="text-2xl text-[#1f3e72]  font-bold mb-1">Call</h2>
+                            <h2 className="text-xl text-[#8c8b8b] font-bold mb-1">0123456789</h2>
+                            <button className="bg-blue-400 hover:bg-blue-500 text-white px-2 py-1 rounded">call now</button>
+                        </div>
+                        <div className=" rounded shadow-md hover:shadow-xl border-2 border-t-gray-200  p-4">
+                            <h2 className="text-2xl text-[#1f3e72]  font-bold mb-1">Email</h2>
+                            <h2 className="text-xl text-[#8c8b8b] font-bold mb-1">0123456789</h2>
+                            <button className="bg-blue-400 hover:bg-blue-500 text-white px-2 py-1 rounded">send now</button>
+                        </div>
+                        <div className=" rounded shadow-md hover:shadow-xl border-2 border-t-gray-200  p-4">
+                            <h2 className="text-2xl text-[#1f3e72]  font-bold mb-1">Massage</h2>
+                            <h2 className="text-xl text-[#8c8b8b] font-bold mb-1">0123456789</h2>
+                            <button className="bg-blue-400 hover:bg-blue-500 text-white px-2 py-1 rounded">Message </button>
                         </div>
 
-                        {/* Message Section */}
-                        <div className="bg-white p-6 rounded shadow-md">
-                            <h2 className="text-2xl text-[#1f3e72]  font-bold mb-4">Chat</h2>
-                            <button className="bg-blue-500 text-white px-4 py-2 rounded">Message</button>
-                        </div>
-
-                        {/* Email Section */}
-                        <div className="bg-white p-6 rounded shadow-md">
-                            <h2 className="text-2xl text-[#1f3e72]  font-bold mb-4">Send an Email</h2>
-                            <button className="bg-blue-500 text-white px-4 py-2 rounded">Email</button>
-                        </div>
-
-                        {/* Chat Section */}
-                        <div className="bg-white p-6 rounded shadow-md">
-                            <h2 className="text-2xl text-[#1f3e72]  font-bold mb-4">Live Chat</h2>
-                            <button className="bg-blue-500 text-white px-4 py-2 rounded">Chat</button>
-                        </div>
                     </div>
                 </div>
             </div>

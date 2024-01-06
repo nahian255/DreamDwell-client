@@ -14,7 +14,7 @@ const Header = () => {
     }, []);
 
     return (
-        <div className="flex gap-14 px-20 align-baseline font-sans relative">
+        <div className="flex gap-14 px-20 align-baseline font-sans relative pt-10">
             <div className="bg-gray-500 rounded-full w-60 h-80 absolute left-8 top-3 blur-3xl"> </div>
 
             <div className="w-1/2 py-10 relative">

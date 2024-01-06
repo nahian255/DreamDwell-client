@@ -15,7 +15,6 @@ const Properites = () => {
     // Filter data based on the search query
     const filteredData = data.filter(item =>
         item.name.toLowerCase().includes(searchQuery.toLowerCase())
-
     );
     console.log(filteredData);
 

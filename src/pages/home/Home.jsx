@@ -16,7 +16,6 @@ const Home = () => {
                 <Contact />
                 <GetStart />
             </div>
-
         </div>
     );
 };
