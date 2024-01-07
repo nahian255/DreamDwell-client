@@ -10,6 +10,11 @@ export default {
         poppins: ['Poppins', 'sans-serif'],
       },
     },
+    themes: false,
   },
-  plugins: [],
+  plugins:
+    [
+      // require("daisyui")
+    ]
+  ,
 }

@@ -76,7 +76,6 @@ const AddProperty = () => {
         // }
     };
 
-
     return (
         <div className="p-10 flex flex-col gap-2 items-center justify-center">
             <h1 className="text-4xl text-[#1f3e72] font-bold pb-4">Add Property</h1>
