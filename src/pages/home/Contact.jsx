@@ -2,6 +2,7 @@ import image from "../../assets/hero-image.png"
 import Connection from "./contactPart/Connection";
 
 const Contact = () => {
+
     return (
         <div className="flex gap-14 align-baseline ">
             <div className="w-1/2 p-10 relative">
