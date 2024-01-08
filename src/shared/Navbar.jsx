@@ -1,11 +1,23 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../authProvider/Provider";
+import { getAuth, signOut } from "firebase/auth";
+import app from "../firebase/firebase.config";
 // import { AuthContext } from "../authProvider/Provider";
+
+const auth = getAuth(app);
 
 const Navbar = () => {
     const { user } = useContext(AuthContext)
 
+    // sign Out button ...
+    const handelOut = () => {
+        signOut(auth).then(() => {
+            // Sign-out successful.
+        }).catch(() => {
+            // An error happened.
+        });
+    };
 
     return (
         <div className="fix">
@@ -20,7 +32,7 @@ const Navbar = () => {
                         user ?
                             (
                                 <li className="text-white hover:text-orange-400">
-                                    <button >sing Out</button>
+                                    <button onClick={handelOut}>sing Out</button>
                                 </li>
                             ) :
                             (
