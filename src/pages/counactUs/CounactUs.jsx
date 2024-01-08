@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 import image from '../../assets/sendMsg.jpg'
+import Connection from '../home/contactPart/Connection';
 
 const ContactUs = () => {
     const [formData, setFormData] = useState({
@@ -8,6 +9,12 @@ const ContactUs = () => {
         email: '',
         message: '',
     });
+
+    // const [error, setError] = useState({
+    //     name: '',
+    //     email: '',
+    //     message: '',
+    // });
 
     const handleChange = (field, value) => {
         setFormData((prevData) => ({
@@ -19,10 +26,12 @@ const ContactUs = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-        // Add your logic here to handle form submission
-        // You can use formData to send the data to your server or perform other actions
-        console.log('Form submitted:', formData);
+        if (!formData.name) {
+            console.error('Name field is empty. Please enter your name.');
+            return;
+        }
 
+        console.log('Form submitted:', formData);
         // Reset the form data
         setFormData({
             name: '',
@@ -30,28 +39,28 @@ const ContactUs = () => {
             message: '',
         });
 
-        try {
-            const response = await fetch('http://localhost:3000/api/add-message', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData),
-            });
-            if (response.ok) {
-                console.log('Form data submitted successfully');
-                // Reset the form data if needed
-                setFormData({
-                    name: '',
-                    email: '',
-                    message: '',
-                });
-            } else {
-                console.error('Failed to submit form data:', response.statusText);
-            }
-        } catch (error) {
-            console.error('Error submitting form data:', error.message);
-        }
+        // try {
+        //     const response = await fetch('http://localhost:3000/api/add-message', {
+        //         method: 'POST',
+        //         headers: {
+        //             'Content-Type': 'application/json',
+        //         },
+        //         body: JSON.stringify(formData),
+        //     });
+        //     if (response.ok) {
+        //         console.log('Form data submitted successfully');
+        //         // Reset the form data if needed
+        //         setFormData({
+        //             name: '',
+        //             email: '',
+        //             message: '',
+        //         });
+        //     } else {
+        //         console.error('Failed to submit form data:', response.statusText);
+        //     }
+        // } catch (error) {
+        //     console.error('Error submitting form data:', error.message);
+        // }
     };
 
 
@@ -77,6 +86,7 @@ const ContactUs = () => {
                                 placeholder="Enter your name"
                                 value={formData.name}
                                 onChange={(e) => handleChange('name', e.target.value)}
+                                required
                             />
                         </div>
                         <div className="mb-4">
@@ -91,6 +101,7 @@ const ContactUs = () => {
                                 placeholder="Enter your email"
                                 value={formData.email}
                                 onChange={(e) => handleChange('email', e.target.value)}
+                                required
                             />
                         </div>
                         <div className="mb-4">
@@ -105,6 +116,7 @@ const ContactUs = () => {
                                 placeholder="Enter your message"
                                 value={formData.message}
                                 onChange={(e) => handleChange('message', e.target.value)}
+                                required
                             />
                         </div>
                         <div>
@@ -124,30 +136,7 @@ const ContactUs = () => {
 
             <div className='py-8'>
                 <h1 className="text-4xl font-sans text-[#1f3e72] font-bold text-center"> Fell free to contact us</h1>
-                <div className="grid grid-cols-2 gap-4 transition ease-in-out text-center py-8">
-                    {/* Call Section */}
-                    <div className=" rounded shadow-md hover:shadow-xl border-2 border-t-gray-200  p-4">
-                        <h2 className="text-2xl text-[#1f3e72]  font-bold mb-1">Chat</h2>
-                        <h2 className="text-xl text-[#8c8b8b] font-bold mb-1">0123456789</h2>
-                        <button className="bg-blue-400 hover:bg-blue-500 text-white px-2 py-1 rounded">chat now</button>
-                    </div>
-                    <div className=" rounded shadow-md hover:shadow-xl border-2 border-t-gray-200  p-4">
-                        <h2 className="text-2xl text-[#1f3e72]  font-bold mb-1">Call</h2>
-                        <h2 className="text-xl text-[#8c8b8b] font-bold mb-1">0123456789</h2>
-                        <button className="bg-blue-400 hover:bg-blue-500 text-white px-2 py-1 rounded">call now</button>
-                    </div>
-                    <div className=" rounded shadow-md hover:shadow-xl border-2 border-t-gray-200  p-4">
-                        <h2 className="text-2xl text-[#1f3e72]  font-bold mb-1">Email</h2>
-                        <h2 className="text-xl text-[#8c8b8b] font-bold mb-1">0123456789</h2>
-                        <button className="bg-blue-400 hover:bg-blue-500 text-white px-2 py-1 rounded">send now</button>
-                    </div>
-                    <div className=" rounded shadow-md hover:shadow-xl border-2 border-t-gray-200  p-4">
-                        <h2 className="text-2xl text-[#1f3e72]  font-bold mb-1">Massage</h2>
-                        <h2 className="text-xl text-[#8c8b8b] font-bold mb-1">0123456789</h2>
-                        <button className="bg-blue-400 hover:bg-blue-500 text-white px-2 py-1 rounded">Message </button>
-                    </div>
-
-                </div>
+                <Connection />
             </div>
         </section>
 
