@@ -2,6 +2,8 @@ import { useState } from 'react';
 
 import image from '../../assets/sendMsg.jpg'
 import Connection from '../home/contactPart/Connection';
+import { Demo } from './demo';
+
 
 const ContactUs = () => {
     const [formData, setFormData] = useState({
@@ -138,6 +140,9 @@ const ContactUs = () => {
                 <h1 className="text-4xl font-sans text-[#1f3e72] font-bold text-center"> Fell free to contact us</h1>
                 <Connection />
             </div>
+
+
+
         </section>
 
     );

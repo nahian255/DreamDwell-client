@@ -32,6 +32,7 @@ const Navbar = () => {
                         user ?
                             (
                                 <li className="text-white hover:text-orange-400">
+                                    <button title="pic asbe">user img</button>
                                     <button onClick={handelOut}>sing Out</button>
                                 </li>
                             ) :
