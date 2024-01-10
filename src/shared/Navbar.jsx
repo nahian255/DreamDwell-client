@@ -40,12 +40,17 @@ const Navbar = () => {
                     <Link to={'/properites'}>Properites</Link>
                     <Link to={'countact'}>Countact Us</Link>
                     <Link to={'/add-properites'} >Add Property</Link>
+
+
                     {
                         user ?
                             (
                                 <li className="text-white flex gap-3">
                                     <div>
-                                        <Menu shadow="md" width={200}>
+                                        <h1>{user?.email}</h1>
+                                        <Link to={'booking-properites'} >Bookings</Link>
+                                        <button onClick={handelOut}>Sing out</button>
+                                        {/* <Menu shadow="md" width={200}>
                                             <Menu.Target>
                                                 <Button>{user?.email}</Button>
                                             </Menu.Target>
@@ -60,7 +65,7 @@ const Navbar = () => {
                                                 </Menu.Item>
                                                 <Menu.Divider />
                                             </Menu.Dropdown>
-                                        </Menu>
+                                        </Menu> */}
                                     </div>
                                     <button title="pic asbe"></button>
                                 </li>

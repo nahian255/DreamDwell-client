@@ -15,6 +15,7 @@ const BookingProperty = () => {
 
     const [bookingData, setBookingData] = useState([]);
     console.log(bookingData);
+
     useEffect(() => {
         // Assuming user.email is available in your component's state or props
         if (user?.email) {
@@ -48,8 +49,8 @@ const BookingProperty = () => {
                 <input
                     type="text"
                     placeholder="Search by property name..."
-                    // value={searchQuery}
-                    // onChange={(e) => setSearchQuery(e.target.value)}
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
                     className="px-3 py-2 border-2 border-gray-500 rounded-md w-1/2"
                 />
             </div>
@@ -57,7 +58,7 @@ const BookingProperty = () => {
             <div className='grid grid-cols-3 gap-4'>
                 {filteredData?.map(item => (
                     <div key={item._id}>
-                        <Link to={`/properites/${item._id}`}>
+                        <Link to={`/properites/${item.dataId}`}>
                             <div className='hover:bg-blue-100 p-3 rounded-xl'>
                                 <div>
                                     <img className='rounded-2xl h-[220px]' height={50} src={item.image} alt="" />

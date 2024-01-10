@@ -1,8 +1,8 @@
 import { useLoaderData } from "react-router-dom";
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { DatePicker } from '@mantine/dates';
 import { useDisclosure } from '@mantine/hooks';
-import { Modal, Button } from '@mantine/core';
+import { Modal, } from '@mantine/core';
 // map 
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet'
 import { AuthContext } from "../../authProvider/Provider";
@@ -26,6 +26,12 @@ const ProperitesDetails = () => {
             return;
         }
         try {
+            // Check if the property is already booked
+            // if (isPropertyBooked) {
+            //     alert('Property already booked');
+            //     return;
+            // }
+
             // Prepare booking data
             // const bookingData = { email: user?.email, bathroom, detail, image, name, price, rooms, _id }
             const bookingData = {
@@ -85,11 +91,23 @@ const ProperitesDetails = () => {
                     <div>
                         <p className="text-lg py-2 text-[#8c8b8b]">{data.detail}</p>
                         <p className="text-lg py-2 text-[#8c8b8b]">Location</p>
-                        <button type="submit"
-                            className="bg-[#1f3e72] text-white p-2 rounded-md hover:bg-blue-700"
-                            onClick={open}  >
+                        <button
+                            type="submit"
+                            className={`bg-[#1f3e72] text-white p-2 rounded-md hover:bg-blue-700
+                             `}
+                            onClick={open}
+                        >
                             Booking Now
                         </button>
+                        <button
+                            type="button"
+                            className={`bg-red-500 text-white p-2 rounded-md hover:bg-red-700`}
+                        >
+                            Cancel Booking
+                        </button>
+                        {/* ${bookingConfirmed ? 'hidden' : ''} */}
+
+
                         <>
                             <Modal className="" opened={opened} onClose={close} title="">
                                 {/* Modal content */}
