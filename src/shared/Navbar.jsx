@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../authProvider/Provider";
 import { getAuth, signOut } from "firebase/auth";
 import app from "../firebase/firebase.config";
-// import { AuthContext } from "../authProvider/Provider";
+import { Menu, Button, rem } from '@mantine/core';
+import { IconSettings, } from '@tabler/icons-react';
 
 const auth = getAuth(app);
 
@@ -19,6 +20,17 @@ const Navbar = () => {
         });
     };
 
+    // const handleBookingsClick = () => {
+    //     fetch(`http://localhost:3000/api/booking-properites?email=${user.email}`)
+    //         .then(response => response.json())
+    //         .then(data => {
+    //             console.log('Server response:', data);
+    //         })
+    //         .catch(error => {
+    //             console.error('Error retrieving booking data:', error);
+    //         });
+    // };
+
     return (
         <div className="fix">
             <div className="bg-[#131110] text-white p-3 fixe flex justify-between px-16">
@@ -31,9 +43,26 @@ const Navbar = () => {
                     {
                         user ?
                             (
-                                <li className="text-white hover:text-orange-400">
-                                    <button title="pic asbe">user img</button>
-                                    <button onClick={handelOut}>sing Out</button>
+                                <li className="text-white flex gap-3">
+                                    <div>
+                                        <Menu shadow="md" width={200}>
+                                            <Menu.Target>
+                                                <Button>{user?.email}</Button>
+                                            </Menu.Target>
+
+                                            <Menu.Dropdown>
+                                                <Menu.Label>Application</Menu.Label>
+                                                <Menu.Item leftSection={<IconSettings style={{ width: rem(14), height: rem(14) }} />}>
+                                                    <Link to={'booking-properites'} >Bookings</Link>
+                                                </Menu.Item>
+                                                <Menu.Item leftSection={<IconSettings style={{ width: rem(14), height: rem(14) }} />}>
+                                                    <button onClick={handelOut}>Sing out</button>
+                                                </Menu.Item>
+                                                <Menu.Divider />
+                                            </Menu.Dropdown>
+                                        </Menu>
+                                    </div>
+                                    <button title="pic asbe"></button>
                                 </li>
                             ) :
                             (
@@ -44,6 +73,7 @@ const Navbar = () => {
                             )
                     }
                 </div>
+
             </div>
         </div>
 
