@@ -8,11 +8,31 @@ import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet'
 import { AuthContext } from "../../authProvider/Provider";
 
 const ProperitesDetails = () => {
+
     const { user } = useContext(AuthContext)
     const data = useLoaderData();
     const { bathroom, detail, image, name, price, rooms, _id } = data
-    // console.log(bathroom, detail, image, name, price, rooms, _id);
-    // console.log(data, user?.email)
+
+    // bookingData .....
+    const [bookingData, setBookingData] = useState([]);
+    const filteredBookingData = bookingData?.filter(item => item?.dataId === _id)
+    console.log(filteredBookingData, data);
+    const isBookingConfirmed = filteredBookingData.length > 0;
+
+    useEffect(() => {
+        // Assuming user.email is available in your component's state or props
+        if (user?.email) {
+            fetch(`http://localhost:3000/api/booking-properites?email=${user?.email}`)
+                .then(response => response.json())
+                .then(data => {
+                    // Update state with the received booking data
+                    setBookingData(data);
+                })
+                .catch(error => {
+                    console.error('Error retrieving booking data:', error);
+                });
+        }
+    }, [user?.email, _id]);
 
 
     const position = [51.505, -0.09];
@@ -42,7 +62,8 @@ const ProperitesDetails = () => {
                 email: user?.email,
                 price: price,
                 bathroom: bathroom,
-                rooms: rooms
+                rooms: rooms,
+                bookingConfirmed: true
             };
             // Send POST request to the booking API endpoint
             const response = await fetch('http://localhost:3000/api/add-bookingProperty', {
@@ -71,6 +92,16 @@ const ProperitesDetails = () => {
         }
     };
 
+    // delete booking property
+    const cancelBooking = async () => {
+        alert('kam hoyce')
+        if (!user) {
+            alert('Login first');
+            return;
+        }
+
+
+    };
 
     return (
         <div className="px-24">
@@ -94,14 +125,16 @@ const ProperitesDetails = () => {
                         <button
                             type="submit"
                             className={`bg-[#1f3e72] text-white p-2 rounded-md hover:bg-blue-700
-                             `}
+                             ${isBookingConfirmed ? 'hidden' : ''}`}
                             onClick={open}
                         >
                             Booking Now
                         </button>
                         <button
                             type="button"
-                            className={`bg-red-500 text-white p-2 rounded-md hover:bg-red-700`}
+                            className={`bg-red-500 text-white p-2 rounded-md hover:bg-red-700
+                             ${isBookingConfirmed ? '' : 'hidden'}`}
+                            onClick={cancelBooking}
                         >
                             Cancel Booking
                         </button>

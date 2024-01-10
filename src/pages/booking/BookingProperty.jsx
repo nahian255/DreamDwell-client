@@ -14,12 +14,12 @@ const BookingProperty = () => {
     const { user } = useContext(AuthContext)
 
     const [bookingData, setBookingData] = useState([]);
-    console.log(bookingData);
+    // console.log(bookingData, bookingConfirmed);
 
     useEffect(() => {
         // Assuming user.email is available in your component's state or props
         if (user?.email) {
-            fetch(`http://localhost:3000/api/booking-properites?email=${user.email}`)
+            fetch(`http://localhost:3000/api/booking-properites?email=${user?.email}`)
                 .then(response => response.json())
                 .then(data => {
                     // Update state with the received booking data
@@ -36,9 +36,8 @@ const BookingProperty = () => {
 
     // Filter data based on the search query
     const filteredData = bookingData?.filter(item =>
-        item.name.toLowerCase().includes(searchQuery.toLowerCase())
+        item.name?.toLowerCase().includes(searchQuery.toLowerCase())
     );
-    console.log(filteredData);
 
     return (
         <div className='px-24 py-8'>
@@ -58,7 +57,10 @@ const BookingProperty = () => {
             <div className='grid grid-cols-3 gap-4'>
                 {filteredData?.map(item => (
                     <div key={item._id}>
-                        <Link to={`/properites/${item.dataId}`}>
+                        <Link to={{
+                            pathname: `/properites/${item.dataId}`,
+                            state: { bookingData: item }
+                        }}>
                             <div className='hover:bg-blue-100 p-3 rounded-xl'>
                                 <div>
                                     <img className='rounded-2xl h-[220px]' height={50} src={item.image} alt="" />
