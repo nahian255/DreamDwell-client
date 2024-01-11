@@ -3,7 +3,7 @@ import App from "./faq/faq";
 
 const OurValue = () => {
     return (
-        <div className="lg:flex gap-16 align-baseline">
+        <div className="md:flex gap-16 align-baseline">
             <div className="align-middle lg:p-10 ">
                 <img className="rounded-t-full border-8 border-gray-300" height={300} width={400} src={image} alt="" />
             </div>

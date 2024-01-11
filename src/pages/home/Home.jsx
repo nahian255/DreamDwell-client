@@ -10,7 +10,7 @@ const Home = () => {
             <div className="text-white bg-[#131110]">
                 <Header />
             </div>
-            <div className="px-4 lg:px-20">
+            <div className="px-5 md:px-10 lg:px-20">
                 <PopularResidencies />
                 <OurValue />
                 <Contact />

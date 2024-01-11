@@ -15,24 +15,24 @@ const Header = () => {
 
     return (
         <div className="md:flex gap-14 px-8 md:px-20  align-baseline font-sans relative pt-3 lg:pt-10">
-            <div className="bg-gray-500 rounded-full w-60 h-80 absolute left-8 top-3 blur-3xl"> </div>
+            <div className="bg-gray-500 rounded-full w-32 md:w-52 lg:w-60 h-44 md:h-60 lg:h-80 absolute left-8 top-3 blur-3xl"> </div>
 
             <div className="lg:w-1/2 lg:py-10 relative">
-                <h1 data-aos="fade-up" className="text-6xl font-sans font-bold py-8 ">Discover <br /> Most Suitable Property</h1>
-                <p className="md:text-xl text-[#d1caca] py-3 lg:py-10 font-sans">Find a variety of properties that suit you very easiltyForget all difficulties in finding a residence for you
+                <h1 data-aos="fade-up" className="text-3xl lg:text-6xl font-sans font-bold md:py-4 lg:py-6 ">Discover  Most Suitable Property with <span className="text-orange-500">  Dream Dwell</span></h1>
+                <p className="md:text-base lg:text-xl text-[#d1caca] py-2 md:py-4 lg:py-8 font-sans">Find a variety of properties that suit you very easiltyForget all difficulties in finding a residence for you
                 </p>
-                <div className="flex gap-6">
+                <div className="flex gap-3 lg:gap-6">
                     <div>
-                        <p className="text-3xl lg:text-5xl">9,000<span className="text-orange-500"> +</span></p>
-                        <h1 className="text-[#8c8b8b] ">Premium Product</h1>
+                        <p className="text-3xl lg:text-5xl">9,000<span className="text-orange-500">+</span></p>
+                        <h1 className="text-[#8c8b8b] text-sm lg:text-base font-sans">Premium Product</h1>
                     </div>
                     <div>
-                        <p className="text-3xl lg:text-5xl">9,000<span className="text-orange-500"> +</span></p>
-                        <h1 className="text-[#8c8b8b] ">Happy Customer</h1>
+                        <p className="text-3xl lg:text-5xl">9,000<span className="text-orange-500">+</span></p>
+                        <h1 className="text-[#8c8b8b] text-sm lg:text-base font-sans ">Happy Customer</h1>
                     </div>
                     <div>
-                        <p className="text-3xl lg:text-5xl">28<span className="text-orange-500"> +</span></p>
-                        <h1 className="text-[#8c8b8b] ">Awards Winning</h1>
+                        <p className="text-3xl lg:text-5xl">28<span className="text-orange-500">+</span></p>
+                        <h1 className="text-[#8c8b8b] text-sm lg:text-base font-sans">Awards Winning</h1>
                     </div>
                 </div>
             </div>

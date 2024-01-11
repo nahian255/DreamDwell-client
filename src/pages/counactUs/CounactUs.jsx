@@ -70,11 +70,11 @@ const ContactUs = () => {
 
 
     return (
-        <section className='p-20'>
-            <div className=" md:flex">
-                <div className=' w-1/2'>
-                    <div className=''>
-                        <h1 className="text-5xl font-sans text-[#1f3e72] font-bold">Get in touch</h1>
+        <section className='p-8 lg:p-20'>
+            <div className=" md:flex ">
+                <div className=' lg:w-1/2'>
+                    <div className='text-center'>
+                        <h1 className="text-5xl font-sans text-[#1f3e72] font-bold">Get in Touch with Us</h1>
                         <p className="text-md py-2 text-[#8c8b8b]">Let us know how we can help.</p>
                     </div>
 
@@ -87,7 +87,7 @@ const ContactUs = () => {
                                 id="name"
                                 name="name"
                                 type="text"
-                                className="mt-1 p-2 w-2/3 border-2 border-gray-300 rounded-md"
+                                className="mt-1 p-2 w-full lg:w-2/3 border-2 border-gray-300 rounded-md"
                                 placeholder="Enter your name"
                                 value={formData.name}
                                 onChange={(e) => handleChange('name', e.target.value)}
@@ -102,7 +102,7 @@ const ContactUs = () => {
                                 id="email"
                                 name="email"
                                 type="email"
-                                className="mt-1 p-2 w-2/3 border-2 border-gray-300 rounded-md"
+                                className="mt-1 w-full lg:w-2/3 border-2 border-gray-300 rounded-md"
                                 placeholder="Enter your email"
                                 value={formData.email}
                                 onChange={(e) => handleChange('email', e.target.value)}
@@ -117,7 +117,7 @@ const ContactUs = () => {
                                 id="message"
                                 name="message"
                                 rows="4"
-                                className="mt-1 p-2 w-2/3 border-2 border-gray-300 rounded-md"
+                                className="mt-1 w-full lg:w-2/3 border-2 border-gray-300 rounded-md"
                                 placeholder="Enter your message"
                                 value={formData.message}
                                 onChange={(e) => handleChange('message', e.target.value)}
@@ -127,14 +127,10 @@ const ContactUs = () => {
                         <div>
                             <button
                                 type="submit"
-                                className="bg-[#1f3e72] text-white p-2 rounded-md hover:bg-blue-700"
+                                className="bg-[#1f3e72] w-full lg:w-2/3 text-white p-2 rounded-md hover:bg-blue-700"
                             >
                                 Send Message
                             </button>
-                            <Button justify="center" fullWidth leftSection={icon} rightSection={icon} variant="default">
-                                Button label
-                            </Button>
-
                         </div>
                     </form>
                 </div>
@@ -144,7 +140,7 @@ const ContactUs = () => {
             </div>
 
             <div className='py-8'>
-                <h1 className="text-4xl font-sans text-[#1f3e72] font-bold text-center"> Fell free to contact us</h1>
+                <h1 className="text-4xl font-sans text-[#1f3e72] font-bold text-center"> Feel Open to Connect</h1>
                 <Connection />
             </div>
 

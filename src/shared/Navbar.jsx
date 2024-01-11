@@ -1,10 +1,11 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../authProvider/Provider";
 import { getAuth, signOut } from "firebase/auth";
 import app from "../firebase/firebase.config";
-import { Menu, rem } from '@mantine/core';
+import { Avatar, Menu, rem } from '@mantine/core';
 import { IconSettings } from '@tabler/icons-react';
+import dd from "../assets/dd.jpg"
 import './css/shareStyle.css';
 
 const auth = getAuth(app);
@@ -19,6 +20,7 @@ const Navbar = () => {
         }).catch(() => {
             // An error happened.
         });
+        toggleMobileNav()
     };
 
     const toggleMobileNav = () => {
@@ -29,13 +31,17 @@ const Navbar = () => {
     return (
         <div className=''>
             <div className="bg-[#131110] text-white p-3 flex justify-between items-center px-4 md:px-16">
-                <h1 className="text-2xl md:text-3xl">DreamDwell</h1>
-                <div className="flex gap-4 text-lg md:hidden">
+                <div className="flex">
+                    <Link to='/'><Avatar src={dd} className="w-20 md:w-32 h-10" alt="logoImg" />
+                    </Link>
+                    {/* <h1 className="text-xl md:text-2xl">DreamDwell</h1> */}
+                </div>
+                <div className="flex gap-4 text-lg lg:hidden">
                     <button onClick={toggleMobileNav} className="text-white">
                         <IconSettings size={24} />
                     </button>
                 </div>
-                <div className="hidden md:flex gap-4 text-lg">
+                <div className="hidden lg:flex gap-4 text-lg">
                     <NavLink to={'/'} activeClassName="active">Home</NavLink>
                     <NavLink to={'/properites'} activeClassName="active">Properties</NavLink>
                     <NavLink to={'countact'} activeClassName="active">Contact Us</NavLink>
@@ -70,7 +76,7 @@ const Navbar = () => {
 
             {/* Mobile Nav */}
             {isMobileNavOpen && (
-                <div className="md:hidden bg-[#131110] text-white p-4 flex flex-col gap-4">
+                <div className="lg:hidden bg-[#131110] text-white px-8 md:px-16 flex flex-col gap-4">
                     <NavLink to={'/'} activeClassName="active" onClick={toggleMobileNav}>Home</NavLink>
                     <NavLink to={'/properites'} activeClassName="active" onClick={toggleMobileNav}>Properties</NavLink>
                     <NavLink to={'countact'} activeClassName="active" onClick={toggleMobileNav}>Contact Us</NavLink>

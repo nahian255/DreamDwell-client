@@ -3,6 +3,13 @@ import 'swiper/css';
 import { useEffect, useState } from 'react';
 "../../assets/contact.jpg"
 
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
+
 const PopularResidencies = () => {
     const [data, setData] = useState([]);
 
@@ -27,9 +34,19 @@ const PopularResidencies = () => {
             <div className='py-4'>
                 <Swiper
                     spaceBetween={50}
-                    slidesPerView={3}
+                    slidesPerView={1}
                     onSlideChange={() => console.log('slide change')}
                     onSwiper={(swiper) => console.log(swiper)}
+                    breakpoints={{
+                        // when window width is >= 768px (md)
+                        768: {
+                            slidesPerView: 2,
+                        },
+                        // when window width is >= 1024px (lg)
+                        1024: {
+                            slidesPerView: 3,
+                        },
+                    }}
                 >
                     <div className=''>
                         {
@@ -39,7 +56,7 @@ const PopularResidencies = () => {
                                     <SwiperSlide>
                                         <div className='hover:bg-blue-100 p-3 rounded-xl'>
                                             <div className=''>
-                                                <img className='rounded-2xl h-20 w-20 lg:h-[220px]' src={item.image} alt="" />
+                                                <img className='rounded-2xl  md:h-[150px] lg:h-[220px]' src={item.image} alt="" />
                                                 <h1 className='text-xl py-1'><span className='text-orange-500 font-semibold '>$</span> {item.price}</h1>
                                             </div>
                                             <h1 className='text-[#1f3e72] text-2xl font-bold'>{truncateText(item.name, 10)}</h1>
