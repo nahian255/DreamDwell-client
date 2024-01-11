@@ -3,7 +3,7 @@ const Footer = () => {
     return (
         <div className="py-6 ">
             <hr />
-            <div className="px-28 flex justify-between py-4">
+            <div className="lg:px-28 flex justify-between py-4">
                 <div className="">
                     <h1 className="text-[#007aff] font-bold text-3xl">DreamDwell</h1>
                     <p className="text-sm py-2">Our vision is to make all people <br />

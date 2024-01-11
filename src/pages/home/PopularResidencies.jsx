@@ -29,24 +29,28 @@ const PopularResidencies = () => {
                     spaceBetween={50}
                     slidesPerView={3}
                     onSlideChange={() => console.log('slide change')}
-                    onSwiper={(swiper) => console.log(swiper)}>
-                    {
-                        data?.map(item => (
-                            // console.log(item.image)
-                            <div key={item.price}>
-                                <SwiperSlide>
-                                    <div className='hover:bg-blue-100 p-3 rounded-xl'>
-                                        <div className=''>
-                                            <img className='rounded-2xl h-[220px]' height={50} src={item.image} alt="" />
-                                            <h1 className='text-xl py-1'><span className='text-orange-500 font-semibold '>$</span> {item.price}</h1>
+                    onSwiper={(swiper) => console.log(swiper)}
+                >
+                    <div className=''>
+                        {
+                            data?.map(item => (
+                                // console.log(item.image)
+                                <div key={item.price}>
+                                    <SwiperSlide>
+                                        <div className='hover:bg-blue-100 p-3 rounded-xl'>
+                                            <div className=''>
+                                                <img className='rounded-2xl h-20 w-20 lg:h-[220px]' src={item.image} alt="" />
+                                                <h1 className='text-xl py-1'><span className='text-orange-500 font-semibold '>$</span> {item.price}</h1>
+                                            </div>
+                                            <h1 className='text-[#1f3e72] text-2xl font-bold'>{truncateText(item.name, 10)}</h1>
+                                            <p className='text-sm py-2'>{truncateText(item.detail, 10)}</p>
                                         </div>
-                                        <h1 className='text-[#1f3e72] text-2xl font-bold'>{truncateText(item.name, 10)}</h1>
-                                        <p className='text-sm py-2'>{truncateText(item.detail, 10)}</p>
-                                    </div>
-                                </SwiperSlide>
-                            </div>
-                        ))
-                    }
+                                    </SwiperSlide>
+                                </div>
+                            ))
+                        }
+                    </div>
+
                 </Swiper>
             </div>
         </div>
