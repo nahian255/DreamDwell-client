@@ -18,6 +18,7 @@ const Properites = () => {
     );
     console.log(filteredData);
 
+    // example code ...
 
     return (
         <div className='px-24 py-8'>
@@ -47,6 +48,7 @@ const Properites = () => {
                                 <p className='text-sm py-2'>{truncateText(item.detail, 10)}</p>
                             </div>
                         </Link>
+                        <button className='bg-red-400'> delete</button>
                     </div>
                 ))}
             </div>

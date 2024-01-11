@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from 'react';
 import { DatePicker } from '@mantine/dates';
 import { useDisclosure } from '@mantine/hooks';
@@ -10,6 +10,7 @@ import { AuthContext } from "../../authProvider/Provider";
 const ProperitesDetails = () => {
 
     const { user } = useContext(AuthContext)
+    const navigate = useNavigate()
     const data = useLoaderData();
     const { bathroom, detail, image, name, price, rooms, _id } = data
 
@@ -17,6 +18,8 @@ const ProperitesDetails = () => {
     const [bookingData, setBookingData] = useState([]);
     const filteredBookingData = bookingData?.filter(item => item?.dataId === _id)
     console.log(filteredBookingData, data);
+    const bookingId = filteredBookingData[0]?._id
+    console.log(bookingId);
     const isBookingConfirmed = filteredBookingData.length > 0;
 
     useEffect(() => {
@@ -94,13 +97,51 @@ const ProperitesDetails = () => {
 
     // delete booking property
     const cancelBooking = async () => {
-        alert('kam hoyce')
-        if (!user) {
-            alert('Login first');
-            return;
+        alert('are you sure want to cancel')
+        try {
+            const response = await fetch(`http://localhost:3000/api/delete-booking-property/${bookingId}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+
+            if (response.ok) {
+                console.log('Property deleted successfully');
+                // alert('Property deleted successfully')
+                navigate('/booking-properites')
+                // Additional logic after successful deletion
+            } else {
+                console.error('Deletion failed:', response.statusText);
+                // Handle the error accordingly
+            }
+        } catch (error) {
+            console.error('Error during deletion:', error.message);
+            // Handle the error accordingly
         }
+    };
 
+    // fack delete poperty
+    const deleteProperty = async () => {
+        // try {
+        //     const response = await fetch(`http://localhost:3000/api/delete-property/${_id}`, {
+        //         method: 'DELETE',
+        //         headers: {
+        //             'Content-Type': 'application/json',
+        //         },
+        //     });
 
+        //     if (response.ok) {
+        //         console.log('Property deleted successfully');
+        //         // Additional logic after successful deletion
+        //     } else {
+        //         console.error('Deletion failed:', response.statusText);
+        //         // Handle the error accordingly
+        //     }
+        // } catch (error) {
+        //     console.error('Error during deletion:', error.message);
+        //     // Handle the error accordingly
+        // }
     };
 
     return (
@@ -171,6 +212,7 @@ const ProperitesDetails = () => {
                     </MapContainer>
 
                 </section>
+                <button onClick={deleteProperty} className="bg-yellow-200"> close poperty</button>
             </div>
 
         </div>

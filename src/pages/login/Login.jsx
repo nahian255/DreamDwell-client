@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../authProvider/Provider";
 
 const Login = () => {
@@ -57,6 +57,8 @@ const Login = () => {
                     onChange={handlePasswordChange}
                     placeholder="Enter your password"
                 />
+                <Link to={'/register'} >Register</Link>
+
                 <button type="submit">Submit</button>
             </form>
         </div>

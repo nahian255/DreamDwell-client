@@ -1,11 +1,11 @@
-import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
+import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../authProvider/Provider";
 import { getAuth, signOut } from "firebase/auth";
 import app from "../firebase/firebase.config";
-import { Menu, Button, rem } from '@mantine/core';
+import { Menu, rem } from '@mantine/core';
 import { IconSettings, } from '@tabler/icons-react';
-
+import './css/shareStyle.css'
 const auth = getAuth(app);
 
 const Navbar = () => {
@@ -36,44 +36,47 @@ const Navbar = () => {
             <div className="bg-[#131110] text-white p-3 fixe flex justify-between px-16">
                 <h1 className="text-3xl">DreamDwell</h1>
                 <div className="flex gap-4 text-xl">
-                    <Link to={'/'}>Home</Link>
-                    <Link to={'/properites'}>Properites</Link>
-                    <Link to={'countact'}>Countact Us</Link>
-                    <Link to={'/add-properites'} >Add Property</Link>
+
+                    <NavLink to={'/'} activeClassName="active">Home</NavLink>
+                    <NavLink to={'/properites'} activeClassName="active">Properites</NavLink>
+                    <NavLink to={'countact'} activeClassName="active">Countact Us</NavLink>
+                    <NavLink to={'/add-properites'} activeClassName="active">Add Property</NavLink>
+                    <Link ></Link>
+                    <Link></Link>
+                    <Link  ></Link>
 
 
                     {
                         user ?
                             (
                                 <li className="text-white flex gap-3">
-                                    <div>
-                                        <h1>{user?.email}</h1>
-                                        <Link to={'booking-properites'} >Bookings</Link>
-                                        <button onClick={handelOut}>Sing out</button>
-                                        {/* <Menu shadow="md" width={200}>
-                                            <Menu.Target>
-                                                <Button>{user?.email}</Button>
-                                            </Menu.Target>
+                                    <Menu shadow="md" width={200}>
+                                        <Menu.Target>
+                                            <h1 className="hover:bg-[#3064bc] text-white px-4 py-1 text-lg rounded-md bg-blue-700" style={{ cursor: 'pointer' }}>
+                                                {user?.email}
+                                            </h1>
+                                        </Menu.Target>
 
-                                            <Menu.Dropdown>
-                                                <Menu.Label>Application</Menu.Label>
-                                                <Menu.Item leftSection={<IconSettings style={{ width: rem(14), height: rem(14) }} />}>
-                                                    <Link to={'booking-properites'} >Bookings</Link>
-                                                </Menu.Item>
-                                                <Menu.Item leftSection={<IconSettings style={{ width: rem(14), height: rem(14) }} />}>
-                                                    <button onClick={handelOut}>Sing out</button>
-                                                </Menu.Item>
-                                                <Menu.Divider />
-                                            </Menu.Dropdown>
-                                        </Menu> */}
-                                    </div>
-                                    <button title="pic asbe"></button>
+                                        <Menu.Dropdown>
+                                            <Menu.Item leftSection={<IconSettings style={{ width: rem(14), height: rem(14) }} />}>
+                                                <Link to={'/booking-properites'}> Booking Property</Link>
+                                            </Menu.Item>
+                                            <Menu.Item leftSection={<IconSettings style={{ width: rem(14), height: rem(14) }} />}>
+                                                <button onClick={handelOut}> LogOut</button>
+                                            </Menu.Item>
+                                        </Menu.Dropdown>
+                                    </Menu>
                                 </li>
                             ) :
                             (
                                 <>
-                                    <Link to={'/login'} >Login</Link>
-                                    <Link to={'/register'} >Register</Link>
+                                    <Link to={'/login'} >
+                                        <button
+                                            className="hover:bg-[#3064bc] text-white px-4 py-1 text-lg rounded-md bg-blue-700"
+                                        >
+                                            Login
+                                        </button>
+                                    </Link>
                                 </>
                             )
                     }

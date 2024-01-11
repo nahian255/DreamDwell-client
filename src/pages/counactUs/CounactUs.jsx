@@ -3,6 +3,9 @@ import { useState } from 'react';
 import image from '../../assets/sendMsg.jpg'
 import Connection from '../home/contactPart/Connection';
 import { Demo } from './demo';
+import { Button } from '@mantine/core';
+import { IconDownload, IconPhoto } from '@tabler/icons-react';
+const icon = <IconPhoto size={14} />;
 
 
 const ContactUs = () => {
@@ -128,6 +131,10 @@ const ContactUs = () => {
                             >
                                 Send Message
                             </button>
+                            <Button justify="center" fullWidth leftSection={icon} rightSection={icon} variant="default">
+                                Button label
+                            </Button>
+
                         </div>
                     </form>
                 </div>

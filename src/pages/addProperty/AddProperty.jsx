@@ -48,32 +48,32 @@ const AddProperty = () => {
 
         console.log(formData);
         console.log(errors);
-        // try {
-        //     const response = await fetch('http://localhost:3000/api/add-properties', {
-        //         method: 'POST',
-        //         headers: {
-        //             'Content-Type': 'application/json',
-        //         },
-        //         body: JSON.stringify(formData),
-        //     });
-        //     if (response.ok) {
-        //         console.log('Form data submitted successfully');
-        //         // Reset the form data if needed
-        //         setFormData({
-        //             name: '',
-        //             details: '',
-        //             location: '',
-        //             image: '',
-        //             price: '',
-        //             bathrooms: '',
-        //             rooms: ''
-        //         });
-        //     } else {
-        //         console.error('Failed to submit form data:', response.statusText);
-        //     }
-        // } catch (error) {
-        //     console.error('Error submitting form data:', error.message);
-        // }
+        try {
+            const response = await fetch('http://localhost:3000/api/add-properties', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            });
+            if (response.ok) {
+                console.log('Form data submitted successfully');
+                // Reset the form data if needed
+                setFormData({
+                    name: '',
+                    details: '',
+                    location: '',
+                    image: '',
+                    price: '',
+                    bathrooms: '',
+                    rooms: ''
+                });
+            } else {
+                console.error('Failed to submit form data:', response.statusText);
+            }
+        } catch (error) {
+            console.error('Error submitting form data:', error.message);
+        }
     };
 
     return (
