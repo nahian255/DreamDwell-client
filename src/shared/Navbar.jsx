@@ -3,8 +3,10 @@ import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../authProvider/Provider";
 import { getAuth, signOut } from "firebase/auth";
 import app from "../firebase/firebase.config";
-import { Avatar, Menu, rem } from '@mantine/core';
+import { Avatar, Burger, Menu, rem } from '@mantine/core';
 import { IconSettings } from '@tabler/icons-react';
+import { useDisclosure } from '@mantine/hooks';
+
 import dd from "../assets/dd.jpg"
 import './css/shareStyle.css';
 
@@ -27,6 +29,7 @@ const Navbar = () => {
         setMobileNavOpen(!isMobileNavOpen);
     };
 
+    const [opened, { toggle }] = useDisclosure();
 
     return (
         <div className=''>
@@ -38,7 +41,8 @@ const Navbar = () => {
                 </div>
                 <div className="flex gap-4 text-lg lg:hidden">
                     <button onClick={toggleMobileNav} className="text-white">
-                        <IconSettings size={24} />
+                        {/* <IconSettings size={24} /> */}
+                        <Burger className="bg-white" opened={opened} onClick={toggle} aria-label="Toggle navigation" />
                     </button>
                 </div>
                 <div className="hidden lg:flex gap-4 text-lg">
@@ -74,7 +78,7 @@ const Navbar = () => {
                 </div>
             </div>
 
-            {/* Mobile Nav */}
+            {/* responsive  Nav */}
             {isMobileNavOpen && (
                 <div className="lg:hidden bg-[#131110] text-white px-8 md:px-16 flex flex-col gap-4">
                     <NavLink to={'/'} activeClassName="active" onClick={toggleMobileNav}>Home</NavLink>

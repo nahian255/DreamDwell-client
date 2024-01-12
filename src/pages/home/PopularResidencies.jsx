@@ -9,6 +9,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
+import { Link } from 'react-router-dom';
 
 const PopularResidencies = () => {
     const [data, setData] = useState([]);
@@ -53,16 +54,19 @@ const PopularResidencies = () => {
                             data?.map(item => (
                                 // console.log(item.image)
                                 <div key={item.price}>
-                                    <SwiperSlide>
-                                        <div className='hover:bg-blue-100 p-3 rounded-xl'>
-                                            <div className=''>
-                                                <img className='rounded-2xl  md:h-[150px] lg:h-[220px]' src={item.image} alt="" />
-                                                <h1 className='text-xl py-1'><span className='text-orange-500 font-semibold '>$</span> {item.price}</h1>
+                                    <Link to={`/properites/${item._id}`}>
+                                        <SwiperSlide>
+                                            <div className='hover:bg-blue-100 p-3 rounded-xl'>
+                                                <div className=''>
+                                                    <img className='rounded-2xl  md:h-[150px] lg:h-[220px]' src={item.image} alt="" />
+                                                    <h1 className='text-xl py-1'><span className='text-orange-500 font-semibold '>$</span> {item.price}</h1>
+                                                </div>
+                                                <h1 className='text-[#1f3e72] text-2xl font-bold'>{truncateText(item.name, 10)}</h1>
+                                                <p className='text-sm py-2'>{truncateText(item.detail, 10)}</p>
                                             </div>
-                                            <h1 className='text-[#1f3e72] text-2xl font-bold'>{truncateText(item.name, 10)}</h1>
-                                            <p className='text-sm py-2'>{truncateText(item.detail, 10)}</p>
-                                        </div>
-                                    </SwiperSlide>
+                                        </SwiperSlide>
+                                    </Link>
+
                                 </div>
                             ))
                         }
