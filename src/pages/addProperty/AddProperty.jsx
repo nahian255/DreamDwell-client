@@ -4,8 +4,7 @@ import { AuthContext } from "../../authProvider/Provider";
 
 const AddProperty = () => {
     const { user } = useContext(AuthContext)
-    // const userEmail = 
-    // console.log(user?.email);
+
     const [name, setName] = useState('');
     const [details, setDetails] = useState('');
     const [image, setImage] = useState('');
@@ -91,8 +90,9 @@ const AddProperty = () => {
         // Check if all fields are valid
         if (name && details && image && location && price && bathrooms && rooms) {
 
-            const formData = { name, details, image, location, price, bathrooms, rooms };
+            const formData = { name, email: user?.email, details, image, location, price, bathrooms, rooms };
             console.log(formData);
+
             try {
                 const response = await fetch('http://localhost:3000/api/add-properties', {
                     method: 'POST',
@@ -104,7 +104,7 @@ const AddProperty = () => {
                 if (response.ok) {
                     alert('Form data submitted successfully');
                     // Reset the form data if needed
-                    setName(''), setDetails(''), setImage(''), setLocation(''), setPrice(), setBathrooms(''), setRooms('')
+                    setName(''), setDetails(''), setImage(''), setLocation(''), setPrice(''), setBathrooms(''), setRooms('')
                 } else {
                     console.error('Failed to submit form data:', response.statusText);
                 }

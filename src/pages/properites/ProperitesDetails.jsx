@@ -161,7 +161,7 @@ const ProperitesDetails = () => {
                         <p>{data.rooms} bathroom </p>
                     </div>
                     <div>
-                        <p className="text-lg py-2 text-[#8c8b8b]">{data.detail}</p>
+                        <p className="text-lg py-2 text-[#8c8b8b]">{data.details}</p>
                         <p className="text-lg py-2 text-[#8c8b8b]">Location</p>
                         <button
                             type="submit"

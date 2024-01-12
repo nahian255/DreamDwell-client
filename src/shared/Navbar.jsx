@@ -63,6 +63,9 @@ const Navbar = () => {
                                         <NavLink to={'/booking-properites'} activeClassName="active">Booking Property</NavLink>
                                     </Menu.Item>
                                     <Menu.Item leftSection={<IconSettings style={{ width: rem(14), height: rem(14) }} />}>
+                                        <NavLink to={'/my-properites'} activeClassName="active">My Property</NavLink>
+                                    </Menu.Item>
+                                    <Menu.Item leftSection={<IconSettings style={{ width: rem(14), height: rem(14) }} />}>
                                         <button onClick={handelOut}>Logout</button>
                                     </Menu.Item>
                                 </Menu.Dropdown>

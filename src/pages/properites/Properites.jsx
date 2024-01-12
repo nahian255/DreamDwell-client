@@ -45,7 +45,7 @@ const Properites = () => {
                                     <h1 className='text-xl py-1'><span className='text-orange-500 font-semibold'>$</span> {item.price}</h1>
                                 </div>
                                 <h1 className='text-[#1f3e72] text-2xl font-bold'>{truncateText(item.name, 10)}</h1>
-                                <p className='text-sm py-2'>{truncateText(item.detail, 10)}</p>
+                                <p className='text-sm py-2'>{truncateText(item.details, 10)}</p>
                             </div>
                         </Link>
                     </div>

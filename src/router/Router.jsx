@@ -10,6 +10,7 @@ import ProperitesDetails from "../pages/properites/ProperitesDetails";
 import Login from "../pages/login/Login";
 import Singup from "../pages/singUp/Singup";
 import BookingProperty from "../pages/booking/BookingProperty";
+import MyProperty from "../pages/myProperty/MyProperty";
 
 const router = createBrowserRouter([
     {
@@ -45,6 +46,10 @@ const router = createBrowserRouter([
             {
                 path: 'booking-properites',
                 element: <BookingProperty />
+            },
+            {
+                path: '/my-properites',
+                element: <MyProperty></MyProperty>
             },
             {
                 path: 'login',
