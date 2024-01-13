@@ -127,8 +127,8 @@ const Login = () => {
                     onChange={handlePasswordChange}
                     
                 /> */}
-                <div>
-                    <p> don't Singup, go to the  <Link to={'/register'} className="bg-blue-500">Register</Link> page</p>
+                <div className="py-2">
+                    <p> don't Singup yet, go to the  <Link to={'/register'} className="text-blue-500 ">Register</Link> page</p>
                 </div>
 
 

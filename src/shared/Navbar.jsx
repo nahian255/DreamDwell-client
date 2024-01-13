@@ -51,26 +51,24 @@ const Navbar = () => {
                     <NavLink to={'countact'} activeClassName="active">Contact Us</NavLink>
                     <NavLink to={'/add-properites'} activeClassName="active">Add Property</NavLink>
                     {user ? (
-                        <li className="text-white flex gap-3">
-                            <Menu shadow="md" width={200}>
-                                <Menu.Target>
-                                    <h1 className="hover:bg-[#3064bc] text-white px-2 md:px-4 py-1 text-md md:text-lg rounded-md bg-blue-700" style={{ cursor: 'pointer' }}>
-                                        {user?.email}
-                                    </h1>
-                                </Menu.Target>
-                                <Menu.Dropdown>
-                                    <Menu.Item leftSection={<IconSettings style={{ width: rem(14), height: rem(14) }} />}>
-                                        <NavLink to={'/booking-properites'} activeClassName="active">Booking Property</NavLink>
-                                    </Menu.Item>
-                                    <Menu.Item leftSection={<IconSettings style={{ width: rem(14), height: rem(14) }} />}>
-                                        <NavLink to={'/my-properites'} activeClassName="active">My Property</NavLink>
-                                    </Menu.Item>
-                                    <Menu.Item leftSection={<IconSettings style={{ width: rem(14), height: rem(14) }} />}>
-                                        <button onClick={handelOut}>Logout</button>
-                                    </Menu.Item>
-                                </Menu.Dropdown>
-                            </Menu>
-                        </li>
+                        <>
+                            <NavLink to={'/booking-properites'} activeClassName="active">Booking Property</NavLink>
+                            <NavLink to={'/my-properites'} activeClassName="active">My Property</NavLink>
+                            <li className="text-white flex gap-3">
+                                <Menu shadow="md" width={200}>
+                                    <Menu.Target>
+                                        <h1 className="hover:bg-[#3064bc] text-white px-2 md:px-4 py-1 text-md md:text-lg rounded-md bg-blue-700" style={{ cursor: 'pointer' }}>
+                                            {user?.email}
+                                        </h1>
+                                    </Menu.Target>
+                                    <Menu.Dropdown>
+                                        <Menu.Item leftSection={<IconSettings style={{ width: rem(14), height: rem(14) }} />}>
+                                            <button onClick={handelOut}>Logout</button>
+                                        </Menu.Item>
+                                    </Menu.Dropdown>
+                                </Menu>
+                            </li>
+                        </>
                     ) : (
                         <NavLink to={'/login'} activeClassName="active">
                             <button className="hover:bg-[#3064bc] text-white px-2 md:px-4 py-1 text-md md:text-lg rounded-md bg-blue-700">
