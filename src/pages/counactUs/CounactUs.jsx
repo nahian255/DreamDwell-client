@@ -5,6 +5,7 @@ import Connection from '../home/contactPart/Connection';
 import { Demo } from './demo';
 import { Button } from '@mantine/core';
 import { IconDownload, IconPhoto } from '@tabler/icons-react';
+import Swal from 'sweetalert2';
 const icon = <IconPhoto size={14} />;
 
 
@@ -14,12 +15,6 @@ const ContactUs = () => {
         email: '',
         message: '',
     });
-
-    // const [error, setError] = useState({
-    //     name: '',
-    //     email: '',
-    //     message: '',
-    // });
 
     const handleChange = (field, value) => {
         setFormData((prevData) => ({
@@ -44,28 +39,35 @@ const ContactUs = () => {
             message: '',
         });
 
-        // try {
-        //     const response = await fetch('http://localhost:3000/api/add-message', {
-        //         method: 'POST',
-        //         headers: {
-        //             'Content-Type': 'application/json',
-        //         },
-        //         body: JSON.stringify(formData),
-        //     });
-        //     if (response.ok) {
-        //         console.log('Form data submitted successfully');
-        //         // Reset the form data if needed
-        //         setFormData({
-        //             name: '',
-        //             email: '',
-        //             message: '',
-        //         });
-        //     } else {
-        //         console.error('Failed to submit form data:', response.statusText);
-        //     }
-        // } catch (error) {
-        //     console.error('Error submitting form data:', error.message);
-        // }
+        try {
+            const response = await fetch('http://localhost:3000/api/add-message', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            });
+            if (response.ok) {
+                console.log('Form data submitted successfully');
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Message Sent Successfull",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                // Reset the form data if needed
+                setFormData({
+                    name: '',
+                    email: '',
+                    message: '',
+                });
+            } else {
+                console.error('Failed to submit form data:', response.statusText);
+            }
+        } catch (error) {
+            console.error('Error submitting form data:', error.message);
+        }
     };
 
 
@@ -102,7 +104,7 @@ const ContactUs = () => {
                                 id="email"
                                 name="email"
                                 type="email"
-                                className="mt-1 w-full lg:w-2/3 border-2 border-gray-300 rounded-md"
+                                className="mt-1 p-2 w-full lg:w-2/3 border-2 border-gray-300 rounded-md"
                                 placeholder="Enter your email"
                                 value={formData.email}
                                 onChange={(e) => handleChange('email', e.target.value)}
