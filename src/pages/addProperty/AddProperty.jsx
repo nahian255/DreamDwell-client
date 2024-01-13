@@ -242,7 +242,7 @@ const AddProperty = () => {
 
             </div>
             <div className=' py-4'>
-                <button onClick={handleSubmit} className="bg-[#1f3e72] w-80  text-white p-2 rounded-md hover:bg-blue-700"> Submit</button>
+                <button onClick={handleSubmit} className="bg-[#1f3e72] hover:bg-blue-700 w-80  text-white p-2 rounded-md "> Submit</button>
             </div>
 
         </div>

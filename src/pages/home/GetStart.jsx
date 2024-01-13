@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 const GetStart = () => {
     return (
@@ -6,7 +7,10 @@ const GetStart = () => {
                 <h1 className="font-bold font-sans text-3xl">Get started with DreamDwell</h1>
                 <p>Subscribe and find super attractive price quotes from us.
                     Find your residence soon</p>
-                <button className="bg-blue-400 hover:bg-blue-500 text-white px-2 py-1 rounded w-32 text-center border-2 border-t-gray-200">Get Started</button>
+                <Link to='/login'>
+                    <button className="bg-blue-400 hover:bg-blue-500 text-white px-2 py-1 rounded w-32 text-center border-2 border-t-gray-200">Get Started</button>
+                </Link>
+
             </div>
         </div>
 

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
+import { Card, Image, Text, Badge, Button, Group } from '@mantine/core';
 
 // Function to truncate text to the first n words
 const truncateText = (text, numWords) => {
@@ -38,7 +39,32 @@ const Properites = () => {
             <div className='grid lg:grid-cols-3 gap-4'>
                 {filteredData?.map(item => (
                     <div key={item._id}>
-                        <Link to={`/properites/${item._id}`}>
+                        <Card shadow="sm" padding="lg" radius="md" withBorder>
+                            <Card.Section>
+                                <Image
+                                    src={item.image}
+                                    height={160}
+                                    alt="Norway"
+                                />
+                            </Card.Section>
+
+                            <Group justify="space-between" mt="md" mb="xs">
+                                <Text className='text-[#1f3e72] text-2xl ' fw={700}>{truncateText(item.name, 10)}</Text>
+                                <Badge className='text-sm' color="orange">$ {item.price}</Badge>
+                            </Group>
+
+                            <Text size="sm" c="dimmed">
+                                {truncateText(item.details, 10)}
+                            </Text>
+
+
+                            <Link to={`/properites/${item._id}`}>
+                                <Button className='bg-[#1f3e72] hover:bg-blue-700' color="" fullWidth mt="md" radius="md">
+                                    View Details
+                                </Button>
+                            </Link>
+                        </Card>
+                        {/* <Link to={`/properites/${item._id}`}>
                             <div className='hover:bg-blue-100 p-3 rounded-xl'>
                                 <div>
                                     <img className='rounded-2xl h-[220px]' height={50} src={item.image} alt="" />
@@ -47,7 +73,7 @@ const Properites = () => {
                                 <h1 className='text-[#1f3e72] text-2xl font-bold'>{truncateText(item.name, 10)}</h1>
                                 <p className='text-sm py-2'>{truncateText(item.details, 10)}</p>
                             </div>
-                        </Link>
+                        </Link> */}
                     </div>
                 ))}
             </div>

@@ -8,7 +8,7 @@ const Header = () => {
 
     useEffect(() => {
         Aos.init({
-            duration: 2200, // Specify the animation duration
+            duration: 1200, // Specify the animation duration
             offset: 40, // Specify the offset (in px) from the original trigger point
         });
     }, []);

@@ -64,9 +64,17 @@ const ContactUs = () => {
                 });
             } else {
                 console.error('Failed to submit form data:', response.statusText);
+                Swal.fire({
+                    icon: "error",
+                    title: "Failed to send message",
+                });
             }
         } catch (error) {
             console.error('Error submitting form data:', error.message);
+            Swal.fire({
+                icon: "error",
+                title: "Failed to send message",
+            });
         }
     };
 

@@ -54,6 +54,9 @@ const PopularResidencies = () => {
                             data?.map(item => (
                                 // console.log(item.image)
                                 <div key={item.price}>
+
+
+
                                     <Link to={`/properites/${item._id}`}>
                                         <SwiperSlide>
                                             <div className='hover:bg-blue-100 p-3 rounded-xl'>
