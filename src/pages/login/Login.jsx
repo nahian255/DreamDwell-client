@@ -1,8 +1,9 @@
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../authProvider/Provider";
-import { Input } from "@mantine/core";
+import { Avatar, Input } from "@mantine/core";
 import Swal from "sweetalert2";
+import googleImg from '../../assets/google.jpg'
 
 const Login = () => {
 
@@ -100,68 +101,73 @@ const Login = () => {
     };
 
     return (
-        <div className="p-10 flex flex-col gap-2 items-center justify-center">
-            <h1 className="text-4xl text-[#1f3e72] font-bold">Login</h1>
+        <div className="max-h-screen bg-white p-6 lg:p-16 flex justify-center items-center">
+            <div className="min-h-3.5 md:w-[400px] lg:h-[500px] p-4 lg:px-6 rounded-3xl shadow-2xl bg-gray-200 ">
+                <h1 className="text-4xl text-[#1f3e72] text-center font-sans font-bold">LOGIN</h1>
 
-            <form onSubmit={handleSubmit} className='w-full lg:w-1/2'>
-                <div>
-                    <label className='text-start text-xl text-[#1f3e72] font-sans'>Email</label>
-                    <Input
-                        size="md"
-                        radius="md"
-                        label="Name"
-                        placeholder="Enter your email"
-                        value={email}
-                        className='w-full'
-                        onChange={(e) => {
-                            setEmail(e.target.value);
-                            validateEmail(e.target.value);
-                        }}
-                    />
-                    {emailError && <div className='text-red-500'>{emailError}</div>}
-                </div>
-                <div>
-                    <label className='text-start text-xl text-[#1f3e72] font-sans'>Password</label>
-                    <Input
-                        size="md"
-                        radius="md"
-                        label="Name"
-                        type="password"
-                        placeholder="Enter your password"
-                        value={password}
-                        className='w-full'
-                        onChange={(e) => {
-                            setPassword(e.target.value);
-                            validatePassword(e.target.value);
-                        }}
-                    />
-                    {passwordError && <div className='text-red-500'>{passwordError}</div>}
-                </div>
+                <form onSubmit={handleSubmit} className='w-full py-10'>
+                    <div className="">
+                        <label className='text-start text-xl text-[#1f3e72] font-sans py-'>Email</label>
+                        <Input
+                            size="md"
+                            radius="md"
+                            label="Name"
+                            placeholder="Enter your email"
+                            value={email}
+                            className='w-full py-1'
+                            onChange={(e) => {
+                                setEmail(e.target.value);
+                                validateEmail(e.target.value);
+                            }}
+                        />
+                        <div className="h-1">
+                            {emailError && <div className='text-red-500 text-sm'>{emailError}</div>}
+                        </div>
+                    </div>
+                    <div className="py-2">
+                        <label className='text-start text-xl text-[#1f3e72] font-sans'>Password</label>
+                        <Input
+                            size="md"
+                            radius="md"
+                            label="Name"
+                            type="password"
+                            placeholder="Enter your password"
+                            value={password}
+                            className='w-full py-1'
+                            onChange={(e) => {
+                                setPassword(e.target.value);
+                                validatePassword(e.target.value);
+                            }}
+                        />
+                        <div className="h-1">
+                            {passwordError && <div className='text-red-500 text-sm'>{passwordError}</div>}
+                        </div>
+                    </div>
+                    <div className="pt-3 pb-1">
+                        <p className="text-[#8c8b8b]">Don&apos;t have a Account yet?<Link to={'/register'} className="text-blue-500 "> Create an Account</Link></p>
+                    </div>
+                    <div className=' py-2'>
+                        <button type="submit" className="bg-[#1f3e72] w-full  text-white p-2 rounded-md hover:bg-blue-700"> Login</button>
+                    </div>
 
+                    <div className="">
+                        <hr />
+                    </div>
+                    <div className="text-center">
+                        <p className="text-[#8c8b8b]"> Another way to Login</p>
 
-                {/* <input
-                   
-                    name="password"
-                    value={password}
-                    onChange={handlePasswordChange}
-                    
-                /> */}
-                <div className="py-2">
-                    <p> don&apos;t Singup yet, go to the  <Link to={'/register'} className="text-blue-500 ">Register</Link> page</p>
-                </div>
+                        <button onClick={handelGoogleSignIn} className="rounded-full  text-4xl text-black py-2 px-4 ">
+                            <Avatar radius="xl" src={googleImg} alt="it's me" />
 
-                <div>
-                    <button onClick={handelGoogleSignIn} className="rounded-full bg-blue-200 text-4xl text-black py-2 px-4 hover:bg-blue-600">
-                        G
-                    </button>
-                </div>
+                        </button>
 
+                    </div>
 
-                <div className=' py-4'>
-                    <button type="submit" className="bg-[#1f3e72] w-80  text-white p-2 rounded-md hover:bg-blue-700"> Login</button>
-                </div>
-            </form>
+                </form>
+
+            </div>
         </div>
+
     );
 };
 
