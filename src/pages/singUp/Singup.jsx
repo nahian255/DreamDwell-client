@@ -1,8 +1,13 @@
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../authProvider/Provider';
 import { Input } from '@mantine/core';
+import { Link, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const Signup = () => {
+    const { singUp, googleSingIn } = useContext(AuthContext)
+
+    const navigate = useNavigate()
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -10,8 +15,6 @@ const Signup = () => {
     const [nameError, setNameError] = useState('')
     const [emailError, setEmailError] = useState('')
     const [passwordError, setPasswordError] = useState('');
-
-    const { singUp } = useContext(AuthContext)
 
     const validateName = (newName) => {
         if (newName.trim() === '') {
@@ -72,6 +75,24 @@ const Signup = () => {
 
         }
     };
+    // google Login 
+    const handelGoogleSignIn = () => {
+        googleSingIn()
+            .then((result) => {
+                const user = result.user;
+                console.log(user);
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Singup Succesfull",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                navigate('/')
+            }).catch((error) => {
+                // Handle Errors here.
+            });
+    };
 
     return (
         <div className="p-10 flex flex-col gap-2 items-center justify-center">
@@ -125,6 +146,14 @@ const Signup = () => {
                         }}
                     />
                     {passwordError && <div className='text-red-500'>{passwordError}</div>}
+                </div>
+                <div className="py-2">
+                    <p> Already have an acount. Go to the <Link to={'/login'} className="text-blue-500 ">Login</Link> page</p>
+                </div>
+                <div>
+                    <button onClick={handelGoogleSignIn} className="rounded-full bg-blue-200 text-4xl text-black py-2 px-4 hover:bg-blue-600">
+                        G
+                    </button>
                 </div>
                 <div className=' py-4'>
                     <button type="submit" className="bg-[#1f3e72] w-80  text-white p-2 rounded-md hover:bg-blue-700">SingUp</button>

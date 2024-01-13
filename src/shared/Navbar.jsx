@@ -6,7 +6,7 @@ import app from "../firebase/firebase.config";
 import { Avatar, Burger, Menu, rem } from '@mantine/core';
 import { IconSettings } from '@tabler/icons-react';
 import { useDisclosure } from '@mantine/hooks';
-
+import Swal from 'sweetalert2'
 import dd from "../assets/dd.jpg"
 import './css/shareStyle.css';
 
@@ -19,6 +19,13 @@ const Navbar = () => {
     const handelOut = () => {
         signOut(auth).then(() => {
             // Sign-out successful.
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Logout Succesfully",
+                showConfirmButton: false,
+                timer: 1500
+            });
         }).catch(() => {
             // An error happened.
         });
@@ -55,16 +62,21 @@ const Navbar = () => {
                             <NavLink to={'/booking-properites'} activeClassName="active">Booking Property</NavLink>
                             <NavLink to={'/my-properites'} activeClassName="active">My Property</NavLink>
                             <li className="text-white flex gap-3">
-                                <Menu shadow="md" width={200}>
+                                <Menu shadow="md" width={140}>
                                     <Menu.Target>
-                                        <h1 className="hover:bg-[#3064bc] text-white px-2 md:px-4 py-1 text-md md:text-lg rounded-md bg-blue-700" style={{ cursor: 'pointer' }}>
-                                            {user?.email}
-                                        </h1>
+                                        {/* <h1 className="hover:bg-[#3064bc] text-white  text-xs md:text-base rounded-md bg-blue-700" style={{ cursor: 'pointer' }}>
+                                        </h1> */}
+                                        <button>
+                                            <Avatar radius="xl" src={user?.photoURL} alt="it's me" />
+                                        </button>
                                     </Menu.Target>
                                     <Menu.Dropdown>
-                                        <Menu.Item leftSection={<IconSettings style={{ width: rem(14), height: rem(14) }} />}>
+                                        <div >
+                                            <button className="text-black text-left text-xl p-2 w-full" onClick={handelOut}>Logout</button>
+                                        </div>
+                                        {/* <Menu.Item leftSection={<IconSettings style={{ width: rem(14), height: rem(14) }} />}>
                                             <button onClick={handelOut}>Logout</button>
-                                        </Menu.Item>
+                                        </Menu.Item> */}
                                     </Menu.Dropdown>
                                 </Menu>
                             </li>
