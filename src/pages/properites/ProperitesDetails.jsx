@@ -2,10 +2,14 @@ import { useLoaderData, useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from 'react';
 import { DatePicker } from '@mantine/dates';
 import { useDisclosure } from '@mantine/hooks';
-import { AspectRatio, Modal, } from '@mantine/core';
-// map 
-import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet'
+import { AspectRatio, Avatar, Modal, } from '@mantine/core';
+import locationImg from '../../assets/location.jpg'
+import bathImg from '../../assets/bathroom.jpg'
+import roomImg from '../../assets/rr.png'
+import parkImg from '../../assets/parking.png'
+// import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet'
 import { AuthContext } from "../../authProvider/Provider";
+import Swal from "sweetalert2";
 
 const ProperitesDetails = () => {
 
@@ -15,11 +19,7 @@ const ProperitesDetails = () => {
     const { bathroom, details, image, name, price, rooms, _id, location } = data
     console.log('property dat', location);
 
-    // bookingData .....
-    const [bookingData, setBookingData] = useState([]);
-    const filteredBookingData = bookingData?.filter(item => item?.dataId === _id)
-    const bookingId = filteredBookingData[0]?._id
-    const isBookingConfirmed = filteredBookingData.length > 0;
+
 
     useEffect(() => {
         // Assuming user.email is available in your component's state or props
@@ -36,15 +36,38 @@ const ProperitesDetails = () => {
         }
     }, [user?.email, _id]);
 
+    // const { data: bookingData, isLoading, isError } = useQuery(
+    //     ['bookingProperties', user?.email],
+    //     async () => {
+    //         const response = await fetch(`http://localhost:3000/api/booking-properites?email=${user?.email}`);
+    //         if (!response.ok) {
+    //             throw new Error('Error retrieving booking data');
+    //         }
+    //         const data = await response.json();
+    //         return data;
+    //     },
+    //     {
+    //         enabled: !!user?.email, // Only fetch data if user.email is available
+    //     }
+    // );
 
-    const position = [51.505, -0.09];
+    // bookingData .....
+    const [bookingData, setBookingData] = useState([]);
+    const filteredBookingData = bookingData?.filter(item => item?.dataId === _id)
+    const bookingId = filteredBookingData[0]?._id
+    const isBookingConfirmed = filteredBookingData.length > 0;
+
+    // const position = [51.505, -0.09];
     const [value, setValue] = useState(null);
     const [opened, { open, close }] = useDisclosure(false)
 
     const addBooking = async () => {
         // Check if user is authenticated
         if (!user) {
-            alert('login first')
+            Swal.fire({
+                icon: "error",
+                title: "Login first",
+            });
             return;
         }
         try {
@@ -157,13 +180,29 @@ const ProperitesDetails = () => {
             <div className="md:flex gap-5">
                 <section className=" md:w-1/2 ">
                     <div className="flex gap-3 py-4">
-                        <p>{data.bathroom} bathroom </p>
-                        <p> parking </p>
-                        <p>{data.rooms} bathroom </p>
+                        <div className="flex gap-2">
+                            <Avatar radius="xl" size="1.5rem" className="mt-" src={roomImg} alt="it's me" />
+                            <p>{bathroom} Rooms </p>
+                        </div>
+                        <div className="flex">
+                            <Avatar radius="xl" size="1.5rem" className="mt-" src={parkImg} alt="it's me" />
+                            <p> parking </p>
+                        </div>
+                        <div className="flex gap-2">
+                            <Avatar radius="xl" size="1.5rem" className="mt-" src={bathImg} alt="it's me" />
+                            <p>{rooms} bathrooms </p>
+                        </div>
+
+
                     </div>
                     <div>
                         <p className="text-sm py-2 text-[#8c8b8b]">{details}</p>
-                        <p className="text-lg py-2 text-[#8c8b8b]">{location}</p>
+                        <div className="flex">
+                            <Avatar radius="xl" size="1.8rem" className="mt-2" src={locationImg} alt="it's me" />
+                            <p className="text-lg py-2 text-[#8c8b8b]">
+                                {location}</p>
+                        </div>
+
                         <div className="py-2">
                             <button
                                 type="submit"
