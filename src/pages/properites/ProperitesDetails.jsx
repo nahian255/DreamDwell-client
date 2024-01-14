@@ -2,7 +2,7 @@ import { useLoaderData, useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from 'react';
 import { DatePicker } from '@mantine/dates';
 import { useDisclosure } from '@mantine/hooks';
-import { Modal, } from '@mantine/core';
+import { AspectRatio, Modal, } from '@mantine/core';
 // map 
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet'
 import { AuthContext } from "../../authProvider/Provider";
@@ -12,14 +12,13 @@ const ProperitesDetails = () => {
     const { user } = useContext(AuthContext)
     const navigate = useNavigate()
     const data = useLoaderData();
-    const { bathroom, detail, image, name, price, rooms, _id } = data
+    const { bathroom, details, image, name, price, rooms, _id, location } = data
+    console.log('property dat', location);
 
     // bookingData .....
     const [bookingData, setBookingData] = useState([]);
     const filteredBookingData = bookingData?.filter(item => item?.dataId === _id)
-    console.log(filteredBookingData, data);
     const bookingId = filteredBookingData[0]?._id
-    console.log(bookingId);
     const isBookingConfirmed = filteredBookingData.length > 0;
 
     useEffect(() => {
@@ -143,42 +142,47 @@ const ProperitesDetails = () => {
         //     // Handle the error accordingly
         // }
     };
+    // demo.... delete in the future..
+
 
     return (
-        <div className="px-24">
-            <div className="py-8">
+        <div className="px-6 md:px-10 lg:px-24">
+            <div className="py-8 flex justify-center items-center">
                 <img className="w-full rounded-xl" src={data.image} alt="" />
             </div>
             <div className="flex gap-28">
-                <h1 className="text-[#1f3e72] text-4xl font-bold">{data.name}</h1>
+                <h1 className="text-[#1f3e72] text-2xl lg:text-4xl font-bold">{data.name}</h1>
                 <h1 className='text-xl py-1'><span className='text-orange-500 font-semibold'>$</span> {data.price}</h1>
             </div>
-            <div className="flex gap-5">
-                <section className=" w-1/2 ">
+            <div className="md:flex gap-5">
+                <section className=" md:w-1/2 ">
                     <div className="flex gap-3 py-4">
                         <p>{data.bathroom} bathroom </p>
                         <p> parking </p>
                         <p>{data.rooms} bathroom </p>
                     </div>
                     <div>
-                        <p className="text-lg py-2 text-[#8c8b8b]">{data.details}</p>
-                        <p className="text-lg py-2 text-[#8c8b8b]">Location</p>
-                        <button
-                            type="submit"
-                            className={`bg-[#1f3e72] text-white p-2 rounded-md hover:bg-blue-700
+                        <p className="text-sm py-2 text-[#8c8b8b]">{details}</p>
+                        <p className="text-lg py-2 text-[#8c8b8b]">{location}</p>
+                        <div className="py-2">
+                            <button
+                                type="submit"
+                                className={`bg-[#1f3e72] text-white w-full p-2 rounded-md hover:bg-blue-700
                              ${isBookingConfirmed ? 'hidden' : ''}`}
-                            onClick={open}
-                        >
-                            Booking Now
-                        </button>
-                        <button
-                            type="button"
-                            className={`bg-red-500 text-white p-2 rounded-md hover:bg-red-700
+                                onClick={open}
+                            >
+                                Booking Now
+                            </button>
+                            <button
+                                type="button"
+                                className={`bg-red-500 text-white p-2 rounded-md hover:bg-red-700
                              ${isBookingConfirmed ? '' : 'hidden'}`}
-                            onClick={cancelBooking}
-                        >
-                            Cancel Booking
-                        </button>
+                                onClick={cancelBooking}
+                            >
+                                Cancel Booking
+                            </button>
+                        </div>
+
                         {/* ${bookingConfirmed ? 'hidden' : ''} */}
 
 
@@ -195,25 +199,33 @@ const ProperitesDetails = () => {
                         </div>
                     </div>
                 </section>
-                {/* map section */}
-                <section className=" w-1/2">
-                    <h1>map here</h1>
 
-                    <MapContainer center={position} zoom={13} style={{ height: '200px', width: '100%', overflow: 'hidden' }}>
-                        <TileLayer
-                            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                            attribution='&copy; OpenStreetMap contributors'
+                {/* map section */}
+                <section className=" md:w-1/2">
+                    <AspectRatio ratio={19 / 9}>
+                        <iframe
+                            src={`https://www.google.com/maps/embed?pb=`}
+                            title="Google map"
+                            style={{ border: 0 }}
                         />
-                        <Marker position={position} >
-                            <Popup>
-                                A marker with a popup.
-                            </Popup>
-                        </Marker>
-                    </MapContainer>
+                    </AspectRatio>
 
                 </section>
-                <button onClick={deleteProperty} className="bg-yellow-200"> close poperty</button>
             </div>
+            <button onClick={deleteProperty} className="bg-yellow-200"> close poperty</button>
+
+
+            {/* <MapContainer center={position} zoom={13} style={{ height: '200px', width: '100%', overflow: 'hidden' }}>
+                <TileLayer
+                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                    attribution='&copy; OpenStreetMap contributors'
+                />
+                <Marker position={position} >
+                    <Popup>
+                        A marker with a popup.
+                    </Popup>
+                </Marker>
+            </MapContainer> */}
 
         </div>
     );
