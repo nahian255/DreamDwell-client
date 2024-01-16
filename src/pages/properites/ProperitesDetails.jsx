@@ -36,28 +36,12 @@ const ProperitesDetails = () => {
         }
     }, [user?.email, _id]);
 
-    // const { data: bookingData, isLoading, isError } = useQuery(
-    //     ['bookingProperties', user?.email],
-    //     async () => {
-    //         const response = await fetch(`http://localhost:3000/api/booking-properites?email=${user?.email}`);
-    //         if (!response.ok) {
-    //             throw new Error('Error retrieving booking data');
-    //         }
-    //         const data = await response.json();
-    //         return data;
-    //     },
-    //     {
-    //         enabled: !!user?.email, // Only fetch data if user.email is available
-    //     }
-    // );
-
     // bookingData .....
     const [bookingData, setBookingData] = useState([]);
     const filteredBookingData = bookingData?.filter(item => item?.dataId === _id)
     const bookingId = filteredBookingData[0]?._id
     const isBookingConfirmed = filteredBookingData.length > 0;
 
-    // const position = [51.505, -0.09];
     const [value, setValue] = useState(null);
     const [opened, { open, close }] = useDisclosure(false)
 
@@ -71,18 +55,11 @@ const ProperitesDetails = () => {
             return;
         }
         try {
-            // Check if the property is already booked
-            // if (isPropertyBooked) {
-            //     alert('Property already booked');
-            //     return;
-            // }
-
-            // Prepare booking data
-            // const bookingData = { email: user?.email, bathroom, detail, image, name, price, rooms, _id }
+            // const bookingData = { email: user?.email, bathroom, details, image, name, price, rooms, _id }
             const bookingData = {
                 dataId: _id,
                 name: name,
-                detail: detail,
+                details: details,
                 image: image,
                 email: user?.email,
                 price: price,
@@ -102,8 +79,14 @@ const ProperitesDetails = () => {
             });
 
             if (response.ok) {
-                console.log('Booking successful');
-                // Additional logic after successful booking
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Booking Succesfull",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                navigate('/booking-properites')
             } else {
                 console.error('Booking failed:', response.statusText);
                 // Handle the error accordingly
@@ -119,27 +102,45 @@ const ProperitesDetails = () => {
 
     // delete booking property
     const cancelBooking = async () => {
-        alert('are you sure want to cancel')
-        try {
-            const response = await fetch(`http://localhost:3000/api/delete-booking-property/${bookingId}`, {
-                method: 'DELETE',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            });
-
-            if (response.ok) {
-                console.log('Property deleted successfully');
-                // alert('Property deleted successfully')
-                navigate('/booking-properites')
-                // Additional logic after successful deletion
-            } else {
-                console.error('Deletion failed:', response.statusText);
-                // Handle the error accordingly
+        const confirmationResult = await Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        });
+        if (confirmationResult.isConfirmed) {
+            try {
+                const response = await fetch(`http://localhost:3000/api/delete-booking-property/${bookingId}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                });
+                if (response.ok) {
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: "Booking Cancels",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    navigate('/booking-properites');
+                    // Additional logic after successful deletion
+                } else {
+                    Swal.fire({
+                        icon: "error",
+                        text: `Deletion failed ${response.statusText}`,
+                    });
+                }
+            } catch (error) {
+                Swal.fire({
+                    icon: "error",
+                    text: `Deletion failed ${error.message}`,
+                });
             }
-        } catch (error) {
-            console.error('Error during deletion:', error.message);
-            // Handle the error accordingly
         }
     };
 
@@ -180,17 +181,17 @@ const ProperitesDetails = () => {
             <div className="md:flex gap-5">
                 <section className=" md:w-1/2 ">
                     <div className="flex gap-3 py-4">
-                        <div className="flex gap-2">
-                            <Avatar radius="xl" size="1.5rem" className="mt-" src={roomImg} alt="it's me" />
-                            <p>{bathroom} Rooms </p>
+                        <div className="flex gap-1">
+                            <Avatar radius="xl" size="1.3rem" className="mt-" src={roomImg} alt="it's me" />
+                            <p>{bathroom} <span className="text-[#8c8b8b]"> Rooms</span> </p>
                         </div>
                         <div className="flex">
-                            <Avatar radius="xl" size="1.5rem" className="mt-" src={parkImg} alt="it's me" />
-                            <p> parking </p>
+                            <Avatar radius="xl" size="1.3rem" className="mt-1" src={parkImg} alt="it's me" />
+                            <p className="text-[#8c8b8b]"> parking </p>
                         </div>
-                        <div className="flex gap-2">
-                            <Avatar radius="xl" size="1.5rem" className="mt-" src={bathImg} alt="it's me" />
-                            <p>{rooms} bathrooms </p>
+                        <div className="flex gap-1">
+                            <Avatar radius="xl" size="1.3rem" className="mt-" src={bathImg} alt="it's me" />
+                            <p>{rooms} <span className="text-[#8c8b8b]"> bathrooms</span> </p>
                         </div>
 
 
@@ -214,7 +215,7 @@ const ProperitesDetails = () => {
                             </button>
                             <button
                                 type="button"
-                                className={`bg-red-500 text-white p-2 rounded-md hover:bg-red-700
+                                className={`bg-red-500  text-white w-full p-2 rounded-md hover:bg-red-700
                              ${isBookingConfirmed ? '' : 'hidden'}`}
                                 onClick={cancelBooking}
                             >
@@ -271,3 +272,53 @@ const ProperitesDetails = () => {
 };
 
 export default ProperitesDetails;
+
+
+// if (Swal.fire({
+//     title: "Are you sure?",
+//     text: "You won't be able to revert this!",
+//     icon: "warning",
+//     showCancelButton: true,
+//     confirmButtonColor: "#3085d6",
+//     cancelButtonColor: "#d33",
+//     confirmButtonText: "Yes, delete it!"
+// }).then((result) => {
+//     if (result.isConfirmed) {
+//         Swal.fire({
+//             title: "Deleted!",
+//             text: "Your file has been deleted.",
+//             icon: "success"
+//         });
+//     }
+// })) {
+
+//     return;
+// }
+
+// try {
+//     const response = await fetch(`http://localhost:3000/api/delete-booking-property/${bookingId}`, {
+//         method: 'DELETE',
+//         headers: {
+//             'Content-Type': 'application/json',
+//         },
+//     });
+
+//     if (response.ok) {
+//         Swal.fire({
+//             position: "top-end",
+//             icon: "success",
+//             title: "Booking Cancels",
+//             showConfirmButton: false,
+//             timer: 1500
+//         });
+//         // alert('Property deleted successfully')
+//         navigate('/booking-properites')
+//         // Additional logic after successful deletion
+//     } else {
+//         console.error('Deletion failed:', response.statusText);
+//         // Handle the error accordingly
+//     }
+// } catch (error) {
+//     console.error('Error during deletion:', error.message);
+//     // Handle the error accordingly
+// }

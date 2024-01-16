@@ -1,9 +1,12 @@
 import { useContext, useState } from 'react';
 import { Input } from '@mantine/core';
 import { AuthContext } from "../../authProvider/Provider";
+import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 
 const AddProperty = () => {
     const { user } = useContext(AuthContext)
+    const navigate = useNavigate()
 
     const [name, setName] = useState('');
     const [details, setDetails] = useState('');
@@ -102,9 +105,15 @@ const AddProperty = () => {
                     body: JSON.stringify(formData),
                 });
                 if (response.ok) {
-                    alert('Form data submitted successfully');
-                    // Reset the form data if needed
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: "Property Added Succesfull",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
                     setName(''), setDetails(''), setImage(''), setLocation(''), setPrice(''), setBathrooms(''), setRooms('')
+                    navigate('/my-properites')
                 } else {
                     console.error('Failed to submit form data:', response.statusText);
                 }

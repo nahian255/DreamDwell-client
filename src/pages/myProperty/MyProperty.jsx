@@ -69,7 +69,7 @@ const MyProperty = () => {
                                                 <h1 className='text-xl py-1'><span className='text-orange-500 font-semibold'>$</span> {item.price}</h1>
                                             </div>
                                             <h1 className='text-[#1f3e72] text-2xl font-bold'>{truncateText(item.name, 10)}</h1>
-                                            <p className='text-sm py-2'>{truncateText(item.detail, 10)}</p>
+                                            <p className='text-sm py-2'>{truncateText(item.details, 10)}</p>
                                         </div>
                                     </Link>
                                 </div>
@@ -89,7 +89,7 @@ const MyProperty = () => {
                                 className="px-3 py-2 border-2 border-gray-500 rounded-md w-1/2"
                             />
                         </div>
-                        <h1 className="text-4xl text-[#1f3e72] font-bold pb-4 text-center">Don't Add any property yet</h1>
+                        <h1 className="text-4xl text-[#1f3e72] font-bold pb-4 text-center">Don&apos;t Add any property yet</h1>
 
                     </div>
             }
