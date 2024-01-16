@@ -17,9 +17,6 @@ const ProperitesDetails = () => {
     const navigate = useNavigate()
     const data = useLoaderData();
     const { bathroom, details, image, name, price, rooms, _id, location } = data
-    console.log('property dat', location);
-
-
 
     useEffect(() => {
         // Assuming user.email is available in your component's state or props
@@ -115,9 +112,7 @@ const ProperitesDetails = () => {
             try {
                 const response = await fetch(`http://localhost:3000/api/delete-booking-property/${bookingId}`, {
                     method: 'DELETE',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
+                    headers: { 'Content-Type': 'application/json', },
                 });
                 if (response.ok) {
                     Swal.fire({
@@ -128,7 +123,6 @@ const ProperitesDetails = () => {
                         timer: 1500
                     });
                     navigate('/booking-properites');
-                    // Additional logic after successful deletion
                 } else {
                     Swal.fire({
                         icon: "error",
@@ -138,35 +132,12 @@ const ProperitesDetails = () => {
             } catch (error) {
                 Swal.fire({
                     icon: "error",
-                    text: `Deletion failed ${error.message}`,
+                    text: ` ${error.message}`,
                 });
             }
         }
     };
 
-    // fack delete poperty
-    const deleteProperty = async () => {
-        // try {
-        //     const response = await fetch(`http://localhost:3000/api/delete-property/${_id}`, {
-        //         method: 'DELETE',
-        //         headers: {
-        //             'Content-Type': 'application/json',
-        //         },
-        //     });
-
-        //     if (response.ok) {
-        //         console.log('Property deleted successfully');
-        //         // Additional logic after successful deletion
-        //     } else {
-        //         console.error('Deletion failed:', response.statusText);
-        //         // Handle the error accordingly
-        //     }
-        // } catch (error) {
-        //     console.error('Error during deletion:', error.message);
-        //     // Handle the error accordingly
-        // }
-    };
-    // demo.... delete in the future..
 
 
     return (
@@ -193,8 +164,6 @@ const ProperitesDetails = () => {
                             <Avatar radius="xl" size="1.3rem" className="mt-" src={bathImg} alt="it's me" />
                             <p>{rooms} <span className="text-[#8c8b8b]"> bathrooms</span> </p>
                         </div>
-
-
                     </div>
                     <div>
                         <p className="text-sm py-2 text-[#8c8b8b]">{details}</p>
@@ -222,10 +191,7 @@ const ProperitesDetails = () => {
                                 Cancel Booking
                             </button>
                         </div>
-
                         {/* ${bookingConfirmed ? 'hidden' : ''} */}
-
-
                         <>
                             <Modal className="" opened={opened} onClose={close} title="">
                                 {/* Modal content */}
@@ -239,7 +205,6 @@ const ProperitesDetails = () => {
                         </div>
                     </div>
                 </section>
-
                 {/* map section */}
                 <section className=" md:w-1/2">
                     <AspectRatio ratio={19 / 9}>
@@ -249,76 +214,10 @@ const ProperitesDetails = () => {
                             style={{ border: 0 }}
                         />
                     </AspectRatio>
-
                 </section>
             </div>
-            <button onClick={deleteProperty} className="bg-yellow-200"> close poperty</button>
-
-
-            {/* <MapContainer center={position} zoom={13} style={{ height: '200px', width: '100%', overflow: 'hidden' }}>
-                <TileLayer
-                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                    attribution='&copy; OpenStreetMap contributors'
-                />
-                <Marker position={position} >
-                    <Popup>
-                        A marker with a popup.
-                    </Popup>
-                </Marker>
-            </MapContainer> */}
-
         </div>
     );
 };
 
 export default ProperitesDetails;
-
-
-// if (Swal.fire({
-//     title: "Are you sure?",
-//     text: "You won't be able to revert this!",
-//     icon: "warning",
-//     showCancelButton: true,
-//     confirmButtonColor: "#3085d6",
-//     cancelButtonColor: "#d33",
-//     confirmButtonText: "Yes, delete it!"
-// }).then((result) => {
-//     if (result.isConfirmed) {
-//         Swal.fire({
-//             title: "Deleted!",
-//             text: "Your file has been deleted.",
-//             icon: "success"
-//         });
-//     }
-// })) {
-
-//     return;
-// }
-
-// try {
-//     const response = await fetch(`http://localhost:3000/api/delete-booking-property/${bookingId}`, {
-//         method: 'DELETE',
-//         headers: {
-//             'Content-Type': 'application/json',
-//         },
-//     });
-
-//     if (response.ok) {
-//         Swal.fire({
-//             position: "top-end",
-//             icon: "success",
-//             title: "Booking Cancels",
-//             showConfirmButton: false,
-//             timer: 1500
-//         });
-//         // alert('Property deleted successfully')
-//         navigate('/booking-properites')
-//         // Additional logic after successful deletion
-//     } else {
-//         console.error('Deletion failed:', response.statusText);
-//         // Handle the error accordingly
-//     }
-// } catch (error) {
-//     console.error('Error during deletion:', error.message);
-//     // Handle the error accordingly
-// }
