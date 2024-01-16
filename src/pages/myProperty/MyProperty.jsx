@@ -131,7 +131,9 @@ const MyProperty = () => {
                                                 View Details
                                             </Button>
                                         </Link>
-                                        <button onClick={() => deleteProperty(item._id)} className="bg-yellow-200"> close poperty</button>
+                                        <Button onClick={() => deleteProperty(item._id)} className='bg-[#f33b41] hover:bg-red-700' color="" fullWidth mt="md" radius="md">
+                                            Delete Property
+                                        </Button>
                                     </Card>
                                 </div>
                             ))}

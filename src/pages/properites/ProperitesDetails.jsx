@@ -18,6 +18,16 @@ const ProperitesDetails = () => {
     const data = useLoaderData();
     const { bathroom, details, image, name, price, rooms, _id, location } = data
 
+
+    // bookingData .....
+    const [bookingData, setBookingData] = useState([]);
+    const filteredBookingData = bookingData?.filter(item => item?.dataId === _id)
+    console.log(bookingData, 'filter', _id);
+    const bookingId = filteredBookingData[0]?._id
+    const isBookingConfirmed = filteredBookingData.length > 0;
+    console.log(isBookingConfirmed, 'booking');
+
+
     useEffect(() => {
         // Assuming user.email is available in your component's state or props
         if (user?.email) {
@@ -32,12 +42,6 @@ const ProperitesDetails = () => {
                 });
         }
     }, [user?.email, _id]);
-
-    // bookingData .....
-    const [bookingData, setBookingData] = useState([]);
-    const filteredBookingData = bookingData?.filter(item => item?.dataId === _id)
-    const bookingId = filteredBookingData[0]?._id
-    const isBookingConfirmed = filteredBookingData.length > 0;
 
     const [value, setValue] = useState(null);
     const [opened, { open, close }] = useDisclosure(false)
@@ -137,8 +141,6 @@ const ProperitesDetails = () => {
             }
         }
     };
-
-
 
     return (
         <div className="px-6 md:px-10 lg:px-24">
