@@ -25,7 +25,7 @@ const router = createBrowserRouter([
                 path: '/properites',
                 element: <Properites />,
                 loader: async () => {
-                    return fetch(`http://localhost:3000/api/properites`);
+                    return fetch(`http://localhost:3000/properites`);
                 },
             },
             {

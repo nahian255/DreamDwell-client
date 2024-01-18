@@ -1,6 +1,6 @@
-import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import { useEffect, useState } from 'react';
+import { Card, Image, Text, Badge, Button, Group } from '@mantine/core';
 "../../assets/contact.jpg"
 
 
@@ -13,6 +13,7 @@ import { Link } from 'react-router-dom';
 
 const PopularResidencies = () => {
     const [data, setData] = useState([]);
+    const newData = data.filter((item, index) => index < 3)
 
     // Function to truncate text to the first n words
     const truncateText = (text, numWords) => {
@@ -21,9 +22,9 @@ const PopularResidencies = () => {
         return words?.length > numWords ? `${truncated}...` : truncated;
     };
 
-    console.log(data);
+    // console.log(newData);
     useEffect(() => {
-        fetch('http://localhost:3000/api/properites')
+        fetch('http://localhost:3000/properites')
             .then(res => res.json())
             .then(data => data(setData(data)))
     }, []);
@@ -33,7 +34,39 @@ const PopularResidencies = () => {
             <h1 className="text-orange-500 font-sans text-2xl font-semibold"> Best choiess</h1>
             <h1 className="text-4xl font-sans text-[#1f3e72] font-bold"> Popular Residencies</h1>
             <div className='py-4'>
-                <Swiper
+                <div className='grid lg:grid-cols-3 gap-4'>
+                    {
+                        newData?.map(item => (
+                            // console.log(item.image)
+                            <div key={item.price}>
+                                <Card shadow="sm" padding="lg" radius="md" withBorder>
+                                    <Card.Section>
+                                        <Image
+                                            src={item.image}
+                                            height={160}
+                                            alt="Norway"
+                                        />
+                                    </Card.Section>
+                                    <Group justify="space-between" mt="md" mb="xs">
+                                        <Text className='text-[#1f3e72] text-2xl ' fw={700}>{truncateText(item.name, 10)}</Text>
+                                        <Badge className='text-sm' color="orange">$ {item.price}</Badge>
+                                    </Group>
+                                    <Text size="sm" c="dimmed">
+                                        {truncateText(item.details, 10)}
+                                    </Text>
+                                    <Link to={`/properites/${item._id}`}>
+                                        <Button className='bg-[#1f3e72] hover:bg-blue-700' color="" fullWidth mt="md" radius="md">
+                                            View Details
+                                        </Button>
+                                    </Link>
+                                </Card>
+                            </div>
+                        ))
+                    }
+                </div>
+
+
+                {/* <Swiper
                     spaceBetween={50}
                     slidesPerView={1}
                     onSlideChange={() => console.log('slide change')}
@@ -49,33 +82,7 @@ const PopularResidencies = () => {
                         },
                     }}
                 >
-                    <div className=''>
-                        {
-                            data?.map(item => (
-                                // console.log(item.image)
-                                <div key={item.price}>
-
-
-
-                                    <Link to={`/properites/${item._id}`}>
-                                        <SwiperSlide>
-                                            <div className='hover:bg-blue-100 p-3 rounded-xl'>
-                                                <div className=''>
-                                                    <img className='rounded-2xl  md:h-[150px] lg:h-[220px]' src={item.image} alt="" />
-                                                    <h1 className='text-xl py-1'><span className='text-orange-500 font-semibold '>$</span> {item.price}</h1>
-                                                </div>
-                                                <h1 className='text-[#1f3e72] text-2xl font-bold'>{truncateText(item.name, 10)}</h1>
-                                                <p className='text-sm py-2'>{truncateText(item.detail, 10)}</p>
-                                            </div>
-                                        </SwiperSlide>
-                                    </Link>
-
-                                </div>
-                            ))
-                        }
-                    </div>
-
-                </Swiper>
+                </Swiper> */}
             </div>
         </div>
     );

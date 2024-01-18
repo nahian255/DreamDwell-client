@@ -12,21 +12,19 @@ import { AuthContext } from "../../authProvider/Provider";
 import Swal from "sweetalert2";
 
 const ProperitesDetails = () => {
-
     const { user } = useContext(AuthContext)
     const navigate = useNavigate()
     const data = useLoaderData();
     const { bathroom, details, image, name, price, rooms, _id, location } = data
-
-
     // bookingData .....
     const [bookingData, setBookingData] = useState([]);
     const filteredBookingData = bookingData?.filter(item => item?.dataId === _id)
-    console.log(bookingData, 'filter', _id);
     const bookingId = filteredBookingData[0]?._id
     const isBookingConfirmed = filteredBookingData.length > 0;
-    console.log(isBookingConfirmed, 'booking');
+    // state use to the booking confrimed
+    const [bookingConfi, setBookingConfi] = useState(false)
 
+    console.log('real', isBookingConfirmed, 'manul', bookingConfi);
 
     useEffect(() => {
         // Assuming user.email is available in your component's state or props
@@ -41,7 +39,7 @@ const ProperitesDetails = () => {
                     console.error('Error retrieving booking data:', error);
                 });
         }
-    }, [user?.email, _id]);
+    }, [user?.email]);
 
     const [value, setValue] = useState(null);
     const [opened, { open, close }] = useDisclosure(false)
@@ -73,12 +71,9 @@ const ProperitesDetails = () => {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    // You may need to include an authentication token here
-                    // 'Authorization': `Bearer ${yourAuthToken}`,
                 },
                 body: JSON.stringify(bookingData),
             });
-
             if (response.ok) {
                 Swal.fire({
                     position: "top-end",
@@ -87,7 +82,9 @@ const ProperitesDetails = () => {
                     showConfirmButton: false,
                     timer: 1500
                 });
-                navigate('/booking-properites')
+                window.location.reload();
+                setBookingConfi(true)
+                // navigate('/booking-properites')
             } else {
                 console.error('Booking failed:', response.statusText);
                 // Handle the error accordingly
@@ -126,6 +123,7 @@ const ProperitesDetails = () => {
                         showConfirmButton: false,
                         timer: 1500
                     });
+                    setBookingConfi(false)
                     navigate('/booking-properites');
                 } else {
                     Swal.fire({
@@ -179,7 +177,7 @@ const ProperitesDetails = () => {
                             <button
                                 type="submit"
                                 className={`bg-[#1f3e72] text-white w-full p-2 rounded-md hover:bg-blue-700
-                             ${isBookingConfirmed ? 'hidden' : ''}`}
+                             ${isBookingConfirmed || bookingConfi ? 'hidden' : ''}`}
                                 onClick={open}
                             >
                                 Booking Now
@@ -187,7 +185,7 @@ const ProperitesDetails = () => {
                             <button
                                 type="button"
                                 className={`bg-red-500  text-white w-full p-2 rounded-md hover:bg-red-700
-                             ${isBookingConfirmed ? '' : 'hidden'}`}
+                             ${isBookingConfirmed || bookingConfi ? '' : 'hidden'}`}
                                 onClick={cancelBooking}
                             >
                                 Cancel Booking

@@ -24,7 +24,6 @@ const Properites = () => {
     return (
         <div className=' px-8 md:px-20 py-8'>
             <h1 className="text-4xl text-[#1f3e72] font-bold pb-4 text-center">All Property</h1>
-
             {/* Search field */}
             <div className="mb-4 items-center flex justify-center">
                 <input
@@ -35,7 +34,6 @@ const Properites = () => {
                     className="px-3 py-2 border-2 border-gray-500 rounded-md lg:w-1/2"
                 />
             </div>
-
             <div className='grid lg:grid-cols-3 gap-4'>
                 {filteredData?.map(item => (
                     <div key={item._id}>
@@ -64,16 +62,6 @@ const Properites = () => {
                                 </Button>
                             </Link>
                         </Card>
-                        {/* <Link to={`/properites/${item._id}`}>
-                            <div className='hover:bg-blue-100 p-3 rounded-xl'>
-                                <div>
-                                    <img className='rounded-2xl h-[220px]' height={50} src={item.image} alt="" />
-                                    <h1 className='text-xl py-1'><span className='text-orange-500 font-semibold'>$</span> {item.price}</h1>
-                                </div>
-                                <h1 className='text-[#1f3e72] text-2xl font-bold'>{truncateText(item.name, 10)}</h1>
-                                <p className='text-sm py-2'>{truncateText(item.details, 10)}</p>
-                            </div>
-                        </Link> */}
                     </div>
                 ))}
             </div>
