@@ -12,6 +12,13 @@ import { AuthContext } from "../../authProvider/Provider";
 import Swal from "sweetalert2";
 
 const ProperitesDetails = () => {
+
+    // page loding in the top
+    useEffect(() => {
+        // Scroll to the top of the page when the component mounts
+        window.scrollTo(5, 2);
+    }, []);
+
     const { user } = useContext(AuthContext)
     const navigate = useNavigate()
     const data = useLoaderData();

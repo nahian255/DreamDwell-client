@@ -3,8 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../authProvider/Provider";
 import { getAuth, signOut } from "firebase/auth";
 import app from "../firebase/firebase.config";
-import { Avatar, Burger, Menu, rem } from '@mantine/core';
-import { IconSettings } from '@tabler/icons-react';
+import { Avatar, Burger, Menu, } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import Swal from 'sweetalert2'
 import dd from "../assets/dd.jpg"
@@ -74,9 +73,7 @@ const Navbar = () => {
                                         <div >
                                             <button className="text-black text-left text-xl p-2 w-full" onClick={handelOut}>Logout</button>
                                         </div>
-                                        {/* <Menu.Item leftSection={<IconSettings style={{ width: rem(14), height: rem(14) }} />}>
-                                            <button onClick={handelOut}>Logout</button>
-                                        </Menu.Item> */}
+
                                     </Menu.Dropdown>
                                 </Menu>
                             </li>
@@ -101,6 +98,7 @@ const Navbar = () => {
                     {user ? (
                         <>
                             <NavLink to={'/booking-properites'} activeClassName="active" onClick={toggleMobileNav}>Booking Property</NavLink>
+                            <NavLink to={'/my-properites'} activeClassName="active">My Property</NavLink>
                             <button onClick={handelOut} className="text-white" >Logout</button>
                         </>
                     ) : (

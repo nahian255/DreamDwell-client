@@ -12,6 +12,7 @@ import 'swiper/css/scrollbar';
 import { Link } from 'react-router-dom';
 
 const PopularResidencies = () => {
+
     const [data, setData] = useState([]);
     const newData = data.filter((item, index) => index < 3)
 

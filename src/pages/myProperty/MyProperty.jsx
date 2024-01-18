@@ -90,7 +90,7 @@ const MyProperty = () => {
         <>
             {
                 myProperty && myProperty.length > 0 ?
-                    <div className='px-24 py-8'>
+                    <div className=' px-8 md:px-20 py-8'>
                         <h1 className="text-4xl text-[#1f3e72] font-bold pb-4 text-center">My Property</h1>
                         {/* Search field */}
                         <div className="mb-4 items-center flex justify-center">
@@ -103,7 +103,7 @@ const MyProperty = () => {
                             />
                         </div>
 
-                        <div className='grid grid-cols-3 gap-4'>
+                        <div className='grid lg:grid-cols-3 gap-4'>
                             {filteredData?.map(item => (
                                 // console.log(item)
                                 <div key={item._id}>

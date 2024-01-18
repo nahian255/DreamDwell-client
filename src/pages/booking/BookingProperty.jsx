@@ -43,7 +43,7 @@ const BookingProperty = () => {
     console.log(filteredData, bookingData);
 
     return (
-        <div className='px-24 py-8'>
+        <div className=' px-8 md:px-20 py-8'>
             <h1 className="text-4xl text-[#1f3e72] font-bold pb-4 text-center">Bookings Property</h1>
 
             {/* Search field */}
@@ -57,7 +57,7 @@ const BookingProperty = () => {
                 />
             </div>
 
-            <div className='grid grid-cols-3 gap-4'>
+            <div className='grid lg:grid-cols-3 gap-4'>
                 {filteredData?.map(item => (
                     <div key={item._id}>
 
