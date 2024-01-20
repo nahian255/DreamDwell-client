@@ -21,7 +21,7 @@ const BookingProperty = () => {
     useEffect(() => {
         // Assuming user.email is available in your component's state or props
         if (user?.email) {
-            fetch(`http://localhost:3000/api/booking-properites?email=${user?.email}`)
+            fetch(`https://anothertry-q9vd.onrender.com/api/booking-properites?email=${user?.email}`)
                 .then(response => response.json())
                 .then(data => {
                     // Update state with the received booking data

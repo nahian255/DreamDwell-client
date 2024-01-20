@@ -17,7 +17,7 @@ const Properites = () => {
     const filteredData = data.filter(item =>
         item.name.toLowerCase().includes(searchQuery.toLowerCase())
     );
-    console.log(filteredData);
+    // console.log('id', data, data._id);
 
     // example code ...
 

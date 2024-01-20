@@ -2,11 +2,7 @@ import { useState } from 'react';
 
 import image from '../../assets/sendMsg.jpg'
 import Connection from '../home/contactPart/Connection';
-import { Demo } from './demo';
-import { Button } from '@mantine/core';
-import { IconDownload, IconPhoto } from '@tabler/icons-react';
 import Swal from 'sweetalert2';
-const icon = <IconPhoto size={14} />;
 
 
 const ContactUs = () => {
@@ -40,7 +36,7 @@ const ContactUs = () => {
         });
 
         try {
-            const response = await fetch('http://localhost:3000/api/add-message', {
+            const response = await fetch('https://anothertry-q9vd.onrender.com/api/add-message', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
