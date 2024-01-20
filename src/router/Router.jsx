@@ -25,14 +25,14 @@ const router = createBrowserRouter([
                 path: '/properites',
                 element: <Properites />,
                 loader: async () => {
-                    return fetch(`http://localhost:3000/properites`);
+                    return fetch(`https://anothertry-q9vd.onrender.com/properites`);
                 },
             },
             {
                 path: '/properites/:id',
                 element: <ProperitesDetails />,
                 loader: async ({ params }) => {
-                    return fetch(`http://localhost:3000/api/single-properites/${params.id}`);
+                    return fetch(`https://anothertry-q9vd.onrender.com/single-properites/${params.id}`);
                 },
             },
             {

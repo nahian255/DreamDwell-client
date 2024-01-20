@@ -97,7 +97,7 @@ const AddProperty = () => {
             console.log(formData);
 
             try {
-                const response = await fetch('http://localhost:3000/api/add-properties', {
+                const response = await fetch('https://anothertry-q9vd.onrender.com/api/add-properties', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
