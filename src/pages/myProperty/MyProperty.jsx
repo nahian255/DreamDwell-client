@@ -54,7 +54,7 @@ const MyProperty = () => {
         });
         if (confirmationResult.isConfirmed) {
             try {
-                const response = await fetch(`http://localhost:3000/api/delete-add-property/${id}`, {
+                const response = await fetch(`https://anothertry-q9vd.onrender.com/api/delete-add-property/${id}`, {
                     method: 'DELETE',
                     headers: {
                         'Content-Type': 'application/json',

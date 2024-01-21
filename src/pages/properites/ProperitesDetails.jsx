@@ -119,7 +119,7 @@ const ProperitesDetails = () => {
         });
         if (confirmationResult.isConfirmed) {
             try {
-                const response = await fetch(`http://localhost:3000/api/delete-booking-property/${bookingId}`, {
+                const response = await fetch(`https://anothertry-q9vd.onrender.com/api/delete-booking-property/${bookingId}`, {
                     method: 'DELETE',
                     headers: { 'Content-Type': 'application/json', },
                 });
