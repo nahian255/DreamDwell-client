@@ -2,8 +2,6 @@ import 'swiper/css';
 import { useEffect, useState } from 'react';
 import { Card, Image, Text, Badge, Button, Group } from '@mantine/core';
 "../../assets/contact.jpg"
-
-
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -45,7 +43,7 @@ const PopularResidencies = () => {
                                         <Image
                                             src={item.image}
                                             height={160}
-                                            alt="Norway"
+                                            alt="property image"
                                         />
                                     </Card.Section>
                                     <Group justify="space-between" mt="md" mb="xs">
