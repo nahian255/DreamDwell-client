@@ -62,15 +62,13 @@ const Properites = () => {
                                     </Card.Section>
 
                                     <Group justify="space-between" mt="md" mb="xs">
-                                        <Text className='text-[#1f3e72] text-2xl ' fw={700}>{truncateText(item.name, 10)}</Text>
+                                        <Text className='text-[#1f3e72] text-2xl ' fw={700}>{truncateText(item.name, 3)}</Text>
                                         <Badge className='text-sm' color="orange">$ {item.price}</Badge>
                                     </Group>
 
                                     <Text size="sm" c="dimmed">
                                         {truncateText(item.details, 10)}
                                     </Text>
-
-
                                     <Link to={`/properites/${item._id}`}>
                                         <Button className='bg-[#1f3e72] hover:bg-blue-700' color="" fullWidth mt="md" radius="md">
                                             View Details
