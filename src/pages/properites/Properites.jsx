@@ -57,7 +57,7 @@ const Properites = () => {
                                         <Image
                                             src={item.image}
                                             height={160}
-                                            alt="Norway"
+                                            alt="property Image"
                                         />
                                     </Card.Section>
 

@@ -12,6 +12,7 @@ import { Link } from 'react-router-dom';
 const PopularResidencies = () => {
 
     const [data, setData] = useState([]);
+    console.log(data);
     const newData = data?.filter((item, index) => index < 3)
 
     // Function to truncate text to the first n words
@@ -23,7 +24,7 @@ const PopularResidencies = () => {
 
     // console.log(newData);
     useEffect(() => {
-        fetch('http://localhost:3000/properites')
+        fetch('https://anothertry-q9vd.onrender.com/properites')
             .then(res => res.json())
             .then(data => data(setData(data)))
     }, []);
@@ -47,7 +48,7 @@ const PopularResidencies = () => {
                                         />
                                     </Card.Section>
                                     <Group justify="space-between" mt="md" mb="xs">
-                                        <Text className='text-[#1f3e72] text-2xl ' fw={700}>{truncateText(item.name, 10)}</Text>
+                                        <Text className='text-[#1f3e72] text-2xl ' fw={700}>{truncateText(item.name, 3)}</Text>
                                         <Badge className='text-sm' color="orange">$ {item.price}</Badge>
                                     </Group>
                                     <Text size="sm" c="dimmed">
