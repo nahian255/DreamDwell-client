@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const GetStart = () => {
     return (
         <div className="py-4 text-white text-center ">
-            <div className="bg-[#4161df] font-sans w-full h-56 rounded-2xl border-4 border-[#5d77d6] p-8 gap-4 flex flex-col items-center justify-center">
+            <div className="bg-[#4161df] font-sans w-full h-56 rounded-2xl border-4 border-[#5d77d6] p-2 md:p-8 gap-4 flex flex-col items-center justify-center">
                 <h1 className="font-bold font-sans text-3xl">Get started with DreamDwell</h1>
                 <p>Subscribe and find super attractive price quotes from us.
                     Find your residence soon</p>
