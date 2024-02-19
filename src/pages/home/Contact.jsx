@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import image from "../../assets/hero-image.png"
+import image from "../../assets/img-3.jpg"
 import Connection from "./contactPart/Connection";
 import Aos from "aos";
 
@@ -22,7 +22,7 @@ const Contact = () => {
                 </div>
             </div>
             <div data-aos="fade-left" className="align-middle p-10 ">
-                <img className="rounded-t-full border-4 border-gray-300" height={300} width={400} src={image} alt="" />
+                <img className="rounded-t-full border-4 border-gray-300" height={400} width={400} src={image} alt="" />
             </div>
 
         </div>

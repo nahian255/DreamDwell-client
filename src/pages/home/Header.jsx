@@ -1,11 +1,9 @@
 import { useEffect } from "react";
-import image from "../../assets/hero-image.png"
+import image from "../../assets/img-3.jpg"
 import 'aos/dist/aos.css';
 import Aos from "aos";
 
-
 const Header = () => {
-
     useEffect(() => {
         Aos.init({
             duration: 1200, // Specify the animation duration
@@ -37,7 +35,8 @@ const Header = () => {
                 </div>
             </div>
             <div data-aos="fade-left" className="align-middle p-8">
-                <img className="rounded-t-full border-4 border-gray-600" height={300} width={400} src={image} alt="" />
+                <img className="rounded-t-full border-4 border-gray-600" height={0} width={350} src={image} alt=""
+                />
             </div>
         </div>
     );
