@@ -4,7 +4,7 @@ import Connection from "./contactPart/Connection";
 import Aos from "aos";
 
 const Contact = () => {
-
+    // this is animation aos 
     useEffect(() => {
         Aos.init({
             duration: 2200, // Specify the animation duration
