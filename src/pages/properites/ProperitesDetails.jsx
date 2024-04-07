@@ -22,17 +22,15 @@ const ProperitesDetails = () => {
     const { user } = useContext(AuthContext)
     const navigate = useNavigate()
     const data = useLoaderData();
-    console.log('ppd', data);
     const { bathroom, details, image, name, price, rooms, _id, location } = data
     // bookingData .....
     const [bookingData, setBookingData] = useState([]);
     const filteredBookingData = bookingData?.filter(item => item?.dataId === _id)
     const bookingId = filteredBookingData[0]?._id
     const isBookingConfirmed = filteredBookingData.length > 0;
+
     // state use to the booking confrimed
     const [bookingConfi, setBookingConfi] = useState(false)
-
-    // console.log('real', isBookingConfirmed, 'manul', bookingConfi);
 
     useEffect(() => {
         // Assuming user.email is available in your component's state or props
@@ -115,7 +113,7 @@ const ProperitesDetails = () => {
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, delete it!"
+            confirmButtonText: "Yes, Cancel it !"
         });
         if (confirmationResult.isConfirmed) {
             try {
