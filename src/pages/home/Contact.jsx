@@ -4,11 +4,12 @@ import Connection from "./contactPart/Connection";
 import Aos from "aos";
 
 const Contact = () => {
-    // this is animation aos 
+
+    // this is animated by aos. A little bit enimated with it.
     useEffect(() => {
         Aos.init({
             duration: 2200, // Specify the animation duration
-            offset: 80, // Specify the offset (in px) from the original trigger point
+            offset: 80,
         });
     }, []);
 
